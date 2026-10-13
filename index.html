@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curriculum Vitae - Abdul Awal</title>
-    <!-- Google Fonts & FontAwesome for icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Abdul Awal - Professional Portfolio & CV</title>
+    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary: #0f172a;
-            --accent: #2563eb;
-            --bg-color: #f1f5f9;
+            --accent: #1e3a8a;
+            --accent-hover: #1d4ed8;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-main: #334155;
-            --border: #e2e8f0;
+            --text-main: #222222;
+            --border: #cbd5e1;
+            --nav-bg: rgba(15, 23, 42, 0.95);
+        }
+
+        [data-theme="dark"] {
+            --primary: #f8fafc;
+            --accent: #60a5fa;
+            --accent-hover: #93c5fd;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #e2e8f0;
+            --border: #334155;
+            --nav-bg: rgba(15, 23, 42, 0.98);
         }
 
         * {
@@ -24,61 +36,215 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Times New Roman', Times, serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
-            padding: 40px 20px;
+            line-height: 1.4;
+            transition: background 0.3s, color 0.3s;
+            font-size: 15px;
         }
 
-        .cv-wrapper {
-            max-width: 850px;
-            background: var(--card-bg);
-            margin: 0 auto;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-        }
-
-        /* Top Header Section */
-        .cv-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: #ffffff;
-            padding: 40px;
+        /* Sticky Navigation Bar with Dropdown & Short Details */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 10px 30px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-brand {
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
             gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Dropdown Styling */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 120%;
+            left: 0;
+            background: var(--card-bg);
+            min-width: 220px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            overflow: hidden;
+            z-index: 1001;
+            list-style: none;
+            padding: 6px 0;
+            border: 1px solid var(--border);
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown-content.profile-dropdown {
+            min-width: 290px;
+            padding: 12px 16px;
+            font-size: 13.5px;
+            color: var(--text-main);
+            line-height: 1.6;
+            left: auto;
+            right: 0;
+        }
+
+        .dropdown-content.profile-dropdown div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 6px;
+        }
+
+        .dropdown-content.profile-dropdown div:last-child {
+            margin-bottom: 0;
+        }
+
+        .dropdown-content.profile-dropdown i {
+            color: var(--accent);
+            width: 16px;
+            text-align: center;
+        }
+
+        .dropdown-content li a {
+            color: var(--text-main);
+            padding: 6px 14px;
+            display: block;
+            font-size: 13.5px;
+        }
+
+        .dropdown-content li a:hover {
+            background-color: var(--accent);
+            color: #ffffff;
+        }
+
+        /* Controls (Print & Theme Toggle) */
+        .nav-controls {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: 1px solid #cbd5e1;
+            color: #cbd5e1;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+
+        .control-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #ffffff;
+        }
+
+        /* Main Container */
+        .cv-wrapper {
+            max-width: 820px;
+            background: var(--card-bg);
+            margin: 75px auto 25px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        /* Header Section */
+        .cv-header {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
             flex-wrap: wrap;
+            scroll-margin-top: 80px;
         }
 
         .header-content h1 {
-            font-size: 32px;
-            font-weight: 700;
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 2px;
             letter-spacing: 0.5px;
-            margin-bottom: 5px;
         }
 
         .header-content h3 {
-            font-size: 16px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: normal;
             color: #94a3b8;
-            margin-bottom: 15px;
+            margin-bottom: 8px;
         }
 
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 6px;
-            font-size: 14px;
+            gap: 4px;
+            font-size: 13px;
         }
 
         .contact-info div {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             color: #cbd5e1;
+        }
+
+        .contact-info i {
+            color: #60a5fa;
+            width: 14px;
         }
 
         .contact-info a {
@@ -88,68 +254,79 @@
         }
 
         .contact-info a:hover {
-            color: #60a5fa;
-        }
-
-        .profile-img-container {
-            flex-shrink: 0;
+            color: #ffffff;
+            text-decoration: underline;
         }
 
         .profile-img {
-            width: 140px;
-            height: 160px;
+            width: 100px;
+            height: 120px;
             object-fit: cover;
-            border-radius: 8px;
-            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
             background-color: #334155;
         }
 
         /* Body Sections */
         .cv-body {
-            padding: 40px;
+            padding: 20px 30px;
         }
 
         section {
-            margin-bottom: 30px;
-        }
-
-        section:last-child {
-            margin-bottom: 0;
+            margin-bottom: 18px;
+            scroll-margin-top: 80px;
         }
 
         h2 {
-            font-size: 18px;
-            color: var(--primary);
+            font-size: 16px;
+            color: var(--accent);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             border-bottom: 2px solid var(--accent);
-            padding-bottom: 6px;
-            margin-bottom: 16px;
+            padding-bottom: 2px;
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
         }
 
         h2 i {
             color: var(--accent);
+            font-size: 14px;
         }
 
-        p.objective {
-            background: #f8fafc;
-            padding: 15px 20px;
+        /* Cover Letter Box */
+        .cover-letter-box {
+            background: var(--bg-color);
+            padding: 14px 18px;
+            border-radius: 6px;
             border-left: 4px solid var(--accent);
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-            font-size: 15px;
+            font-size: 14px;
+            border: 1px solid var(--border);
+            text-align: justify;
+        }
+
+        .cover-letter-box p {
+            margin-bottom: 8px;
+        }
+
+        .cover-letter-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cover-letter-box a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .cover-letter-box a:hover {
+            text-decoration: underline;
         }
 
         /* Experience Item */
         .experience-item {
-            margin-bottom: 20px;
-        }
-
-        .experience-item:last-child {
-            margin-bottom: 0;
+            margin-bottom: 12px;
         }
 
         .exp-header {
@@ -157,291 +334,474 @@
             justify-content: space-between;
             align-items: flex-start;
             flex-wrap: wrap;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .company-name {
-            font-weight: 700;
+            font-weight: bold;
             color: var(--primary);
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .job-title {
-            font-weight: 600;
+            font-weight: bold;
             color: var(--accent);
-            font-size: 15px;
-            margin-bottom: 4px;
+            font-size: 14px;
+            margin-bottom: 2px;
         }
 
         .job-date {
-            font-size: 13px;
-            font-weight: 500;
-            color: #64748b;
-            background: #f1f5f9;
-            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: normal;
+            color: #555555;
+            background: var(--bg-color);
+            padding: 2px 6px;
             border-radius: 4px;
+            border: 1px solid var(--border);
         }
 
         .achievement {
-            font-size: 13px;
-            color: #059669;
-            margin-bottom: 8px;
-            font-weight: 500;
+            font-size: 12.5px;
+            color: #047857;
+            margin-bottom: 3px;
+            font-weight: bold;
         }
 
         ul {
             list-style-type: disc;
-            padding-left: 20px;
+            padding-left: 18px;
         }
 
         ul.sub-list {
             list-style-type: circle;
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         li {
-            font-size: 14px;
-            margin-bottom: 6px;
+            font-size: 13.5px;
+            margin-bottom: 3px;
         }
 
-        /* Grid Layout for details */
+        /* Grid Layout */
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 20px;
         }
 
         /* Tables */
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         .info-table td {
-            padding: 6px 0;
+            padding: 3px 0;
             vertical-align: top;
         }
 
         .info-table td.label {
-            font-weight: 600;
+            font-weight: bold;
             color: var(--primary);
-            width: 40%;
+            width: 38%;
         }
 
+        /* Declaration Box Styling */
         .declaration-box {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 40px;
+            background: var(--bg-color);
+            padding: 16px 20px;
+            border-radius: 6px;
+            margin-top: 15px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            flex-wrap: wrap;
             gap: 20px;
+            border: 1px solid var(--border);
+            font-size: 13.5px;
         }
 
         .declaration-text {
-            font-size: 14px;
+            text-align: left;
+            flex: 1;
         }
 
         .signature {
-            border-top: 1px solid #94a3b8;
+            border-top: 1px solid var(--text-main);
             width: 200px;
             text-align: center;
-            padding-top: 5px;
-            font-weight: 600;
-            font-size: 14px;
+            padding-top: 4px;
+            font-weight: bold;
+            font-size: 13.5px;
             color: var(--primary);
+            margin-left: auto;
         }
 
-        /* Responsive */
+        /* Compact Ultra-Optimized Modern Print Settings (Fewer Pages) */
+        @media print {
+            @page {
+                size: A4;
+                margin: 8mm;
+            }
+            .navbar, .control-btn {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                font-size: 10.5pt;
+                line-height: 1.3;
+            }
+            .cv-wrapper {
+                box-shadow: none !important;
+                margin: 0 !important;
+                border: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+            .cv-header {
+                padding: 12px 18px !important;
+                background: #0f172a !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .cv-body {
+                padding: 12px 18px !important;
+            }
+            section {
+                margin-bottom: 10px !important;
+                page-break-inside: avoid;
+            }
+            .cover-letter-box, .declaration-box {
+                background: #f1f5f9 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 10px 14px !important;
+            }
+            h2 {
+                margin-bottom: 6px !important;
+                font-size: 14px !important;
+            }
+        }
+
+        /* Responsive Mobile View */
         @media (max-width: 768px) {
+            .navbar {
+                padding: 8px 12px;
+                flex-direction: column;
+                gap: 6px;
+            }
+            .nav-links {
+                gap: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .cv-wrapper {
+                margin-top: 130px;
+            }
             .cv-header {
                 flex-direction: column-reverse;
                 text-align: center;
+                padding: 20px 15px;
             }
             .contact-info div {
                 justify-content: center;
             }
             .grid-2 {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 12px;
             }
-            body {
-                padding: 10px;
+            .declaration-box {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .signature {
+                margin-left: 0;
+                align-self: flex-end;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="cv-wrapper">
-    <!-- Header Section -->
-    <header class="cv-header">
-        <div class="header-content">
-            <h1>Abdul Awal</h1>
-            <h3>Curriculum Vitae (For Administration Job)</h3>
-            <div class="contact-info">
-                <div><i class="fa-solid fa-location-dot"></i> Eiffel Garden-3 (Room #329), Al Waha Street, Al Quoz-3, Dubai, UAE</div>
-                <div><i class="fa-solid fa-phone"></i> <a href="tel:+971528182654">+971 52 818 2654</a></div>
-                <div><i class="fa-solid fa-envelope"></i> <a href="mailto:Maawal86@gmail.com">Maawal86@gmail.com</a></div>
-            </div>
-        </div>
-        <div class="profile-img-container">
-            <!-- আপনার দেওয়া গুগল ড্রাইভের ছবি থেকে ডিরেক্ট লিংক ব্যবহার করা হয়েছে -->
-            <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal" class="profile-img">
-        </div>
-    </header>
-
-    <div class="cv-body">
-        <!-- Career Objective -->
-        <section>
-            <h2><i class="fa-solid fa-bullseye"></i> Career Objective</h2>
-            <p class="objective">To get an opportunity in the well-reputed organization where I can make the best use of my potential and contribute to the organization's growth.</p>
-        </section>
-
-        <!-- Working Experience -->
-        <section>
-            <h2><i class="fa-solid fa-briefcase"></i> Working Experience</h2>
+    <!-- Top Navigation Bar with Dropdown Menu & Short Details -->
+    <nav class="navbar">
+        <div class="nav-brand" onclick="scrollToHeader()"><i class="fa-solid fa-user-tie"></i> Abdul Awal</div>
+        <ul class="nav-links">
+            <li><a href="#header-section" onclick="scrollToHeader()">Home</a></li>
             
-            <div class="experience-item" style="margin-bottom: 20px;">
-                <div class="exp-header">
-                    <div>
-                        <div class="company-name">G4S Secure Solution LLC, Dubai - An Allied Universal® Company</div>
-                        <div class="job-title">Security Guard</div>
-                    </div>
-                    <div class="job-date">02 May 2012 – Present</div>
+            <!-- Main Dropdown Menu -->
+            <li class="dropdown" id="menu-dropdown">
+                <a href="javascript:void(0);" onclick="toggleDropdown(event)"><i class="fa-solid fa-bars"></i> Menu <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></a>
+                <ul class="dropdown-content">
+                    <li><a href="#home" onclick="closeDropdowns()">Cover Letter</a></li>
+                    <li><a href="#objective" onclick="closeDropdowns()">Objective</a></li>
+                    <li><a href="#experience" onclick="closeDropdowns()">Experience</a></li>
+                    <li><a href="#skills" onclick="closeDropdowns()">Training and Skill</a></li>
+                    <li><a href="#education" onclick="closeDropdowns()">Education and Language</a></li>
+                    <li><a href="#personal" onclick="closeDropdowns()">Personal Info</a></li>
+                    <li><a href="#documents" onclick="closeDropdowns()">Documents Attachment</a></li>
+                    <li><a href="#declaration" onclick="closeDropdowns()">Declaration</a></li>
+                </ul>
+            </li>
+
+            <!-- Dropdown Menu for Short Details -->
+            <li class="dropdown" id="details-dropdown">
+                <a href="javascript:void(0);" onclick="toggleDetailsDropdown(event)"><i class="fa-solid fa-id-badge"></i> Short Details <i class="fa-solid fa-chevron-down" style="font-size: 9px;"></i></a>
+                <div class="dropdown-content profile-dropdown">
+                    <div><i class="fa-solid fa-user"></i> <strong>Name:</strong> Abdul Awal</div>
+                    <div><i class="fa-solid fa-briefcase"></i> <strong>Role:</strong> Administration Job</div>
+                    <div><i class="fa-solid fa-location-dot"></i> <strong>Location:</strong> Dubai, UAE</div>
+                    <div><i class="fa-solid fa-phone"></i> <strong>Phone:</strong> +971 52 818 2654</div>
+                    <div><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> aawal86@gmail.com</div>
                 </div>
-                <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Two-time appreciation letter by G4S, Dubai Br.</div>
-                <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Assignment History:</p>
-                <ul class="sub-list">
-                    <li>Seville Products LLC (Br. - BID) - Security TL</li>
-                    <li>Seville Products LLC (IFFCO Beauty) - Security TL</li>
-                    <li>First Abu Dhabi Bank - Deira Branch - Security</li>
-                    <li>Etisalat - Al Baraha Business Center & Exchange - Security</li>
-                    <li>First Gulf Bank - Retail Sales Office - Security TL</li>
-                </ul>
-            </div>
+            </li>
+        </ul>
 
-            <div class="experience-item">
-                <div class="exp-header">
-                    <div>
-                        <div class="company-name">Breeze Trading Services LLC, Abu Dhabi</div>
-                        <div class="job-title">FM Service</div>
-                    </div>
-                    <div class="job-date">31 October 2006 – 13 October 2009</div>
-                </div>
-                <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Assignment History:</p>
-                <ul class="sub-list">
-                    <li>Securities and Commodities Authority - IT Department</li>
-                    <li>Al Hoty-Stanger Laboratories - Chemistry Department</li>
-                    <li>Liwa Internet Café</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Key Responsibilities -->
-        <section>
-            <h2><i class="fa-solid fa-tasks"></i> Key Responsibility</h2>
-            <ul>
-                <li>Customer service (Greetings & Support)[span_0](start_span)[span_0](end_span)</li>
-                <li>Supporting HR Manager by doing HR Administration activities like issuance NOC's, Invoice verification, Petty cash dealing, Visa & EMID renewal process, Coordination with worker etc.[span_1](start_span)[span_1](end_span)</li>
-                <li>Access Control and Materials Control as per Client SOP[span_2](start_span)[span_2](end_span)</li>
-                <li>Operating CCTV and report to Client or Seniors if seen any suspicious activities[span_3](start_span)[span_3](end_span)</li>
-                <li>Various reception duty upon request like telephone, inbound/outbound courier, documentation filing etc.[span_4](start_span)[span_4](end_span)</li>
-                <li>Information share with client's or IMC, SMC, BMC & HSE as per Client's SOP[span_5](start_span)[span_5](end_span)</li>
-                <li>Maintaining data entry in logbook, excel book[span_6](start_span)[span_6](end_span)</li>
-                <li>Operating Oracle Logistics for shipment entry/exit, tracing[span_7](start_span)[span_7](end_span)</li>
-                <li>Preparing team attendance and coordinating team activities between client and employer[span_8](start_span)[span_8](end_span).</li>
-            </ul>
-        </section>
-
-        <!-- Training & Course -->
-        <section>
-            <h2><i class="fa-solid fa-graduation-cap"></i> Training & Course</h2>
-            <ul>
-                <li>Security Basic Training by G4S & DPS/SIRA[span_9](start_span)[span_9](end_span)</li>
-                <li>BLS, Fire Fighting & POD Training by SIRA[span_10](start_span)[span_10](end_span)</li>
-                <li>Basic Computer Course by Bhuiyan Computer Academy[span_11](start_span)[span_11](end_span)</li>
-            </ul>
-        </section>
-
-        <!-- Two Column Section -->
-        <div class="grid-2">
-            <section>
-                <h2><i class="fa-solid fa-book"></i> Education</h2>
-                <ul>
-                    <li><strong>HSC (12+)</strong> - GPA 2.8 (Year 2004)[span_12](start_span)[span_12](end_span)</li>
-                    <li><strong>SSC (10<sup>th</sup>)</strong> - GPA 3.13 (Year 2001)[span_13](start_span)[span_13](end_span)<br>
-                    <span style="font-size: 12px; color: #64748b;">Education Board of Comilla, Bangladesh</span>[span_14](start_span)[span_14](end_span)</li>
-                </ul>
-            </section>
-
-            <section>
-                <h2><i class="fa-solid fa-language"></i> Languages</h2>
-                <ul>
-                    <li>English</li>
-                    <li>Arabic</li>
-                    <li>Urdu & Hindi</li>
-                    <li>Bengali (Native)</li>
-                </ul>
-            </section>
+        <div class="nav-controls">
+            <button class="control-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+            <button class="control-btn" id="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Dark</button>
         </div>
+    </nav>
 
-        <div class="grid-2">
-            <section>
-                <h2><i class="fa-solid fa-laptop-code"></i> Computer Skills</h2>
+    <div class="cv-wrapper">
+        <!-- Header Section with ID for Home Navigation -->
+        <header class="cv-header" id="header-section">
+            <div class="header-content">
+                <h1>Abdul Awal</h1>
+                <h3>Curriculum Vitae</h3>
+                <div class="contact-info">
+                    <div><i class="fa-solid fa-location-dot"></i> Eiffel Garden 3, Al Waha Street, Al Quoz 4</div>
+                    <div><i class="fa-solid fa-phone"></i> <a href="tel:+971528182654">+971 52 818 2654</a></div>
+                    <div><i class="fa-solid fa-envelope"></i> <a href="mailto:aawal86@gmail.com">aawal86@gmail.com</a></div>
+                </div>
+            </div>
+            <div class="profile-img-container">
+                <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal" class="profile-img">
+            </div>
+        </header>
+
+        <div class="cv-body">
+            
+            <!-- Home Section: Cover Letter (Default) -->
+            <section id="home">
+                <h2><i class="fa-solid fa-envelope-open-text"></i> Cover Letter</h2>
+                <div class="cover-letter-box">
+                    <p><strong>To,</strong><br>The Hiring Manager,<br>Human Resources Department.</p>
+                    <p><strong>Subject: Application for Administration / Administrative Support Position.</strong></p>
+                    <p>Dear Hiring Manager,</p>
+                    <p>I am writing to express my strong interest in securing an administration opportunity within your esteemed organization. With extensive professional experience in security administration, customer service, and coordination roles—including long tenure with G4S Secure Solution LLC in Dubai—I have developed a robust skill set in office communication, record keeping, team management, and handling day-to-day administrative tasks effectively.</p>
+                    <p>I am adept at handling high-pressure environments, multitasking, and maintaining professional operational standards as per client SOPs. Thank you for considering my application. I look forward to the opportunity to discuss how my background aligns with your organization's needs.</p>
+                    <p>Sincerely,<br><strong>Abdul Awal</strong></p>
+                </div>
+            </section>
+
+            <!-- Objective Section -->
+            <section id="objective">
+                <h2><i class="fa-solid fa-bullseye"></i> Career Objective</h2>
+                <div class="cover-letter-box">
+                    <p>To get an opportunity in a well-reputed organization where I can make the best use of my potential and contribute significantly to the organization's growth.</p>
+                </div>
+            </section>
+
+            <!-- Working Experience Section -->
+            <section id="experience">
+                <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
+                
+                <div class="experience-item">
+                    <div class="exp-header">
+                        <div>
+                            <div class="company-name">G4S Secure Solution LLC, Dubai - An Allied Universal Company</div>
+                            <div class="job-title">Security Guard</div>
+                        </div>
+                        <div class="job-date">02 May 2012 – Present</div>
+                    </div>
+                    <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Two-time appreciation letter by G4S, Dubai Br.</div>
+                    <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Certificate of Appreciation from IFFCO (Dated: 23 Feb 2025)</div>
+                    
+                    <p style="font-size: 13px; font-weight: bold; margin-top: 6px; margin-bottom: 2px;">Assignment History:</p>
+                    <ul class="sub-list">
+                        <li>Seville Products LLC (Br. - BID) - Security TL</li>
+                        <li>Seville Products LLC (IFFCO Beauty) - Security TL</li>
+                        <li>First Abu Dhabi Bank - Deira Branch - Security</li>
+                        <li>Etisalat - Al Baraha Business Center & Exchange - Security</li>
+                        <li>First Gulf Bank - Retail Sales Office - Security TL</li>
+                    </ul>
+                </div>
+
+                <!-- Key Responsibilities -->
+                <div style="margin-top: 15px;">
+                    <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 6px; text-transform: uppercase;"><i class="fa-solid fa-tasks"></i> Key Responsibilities</h3>
+                    <ul>
+                        <li>Customer service (Greetings & Support)</li>
+                        <li>Supporting HR Manager by doing HR Administration activities like issuance NOC's, Invoice verification, Petty cash dealing, Visa & EMID renewal process, Coordination with worker etc.</li>
+                        <li>Access Control and Materials Control as per Client SOP</li>
+                        <li>Operating CCTV and report to Client or Seniors if seen any suspicious activities</li>
+                        <li>Various reception duty upon request like telephone, inbound/outbound courier, documentation filing etc.</li>
+                        <li>Information share with client's or IMC, SMC, BMC & HSE as per Client's SOP</li>
+                        <li>Maintaining data entry in logbook, excel book</li>
+                        <li>Operating Oracle Logistics for shipment entry/exit, tracing</li>
+                        <li>Preparing team attendance and coordinating team activities between client and employer</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Training and Skill Section -->
+            <section id="skills">
+                <h2><i class="fa-solid fa-graduation-cap"></i> Training and Skill</h2>
+                
+                <div style="margin-bottom: 15px;">
+                    <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 4px;"><i class="fa-solid fa-certificate"></i> Training & Courses</h3>
+                    <ul>
+                        <li>Security Basic Training by G4S & DPS/SIRA</li>
+                        <li>BLS, Fire Fighting & POD Training by SIRA</li>
+                        <li>Basic Computer Course by Bhuiyan Computer Academy</li>
+                    </ul>
+                </div>
+
+                <div class="grid-2">
+                    <div>
+                        <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 4px;"><i class="fa-solid fa-laptop"></i> Computer Knowledge</h3>
+                        <table class="info-table">
+                            <tr><td class="label"><i class="fa-brands fa-windows"></i> OS:</td><td>Windows 10</td></tr>
+                            <tr><td class="label"><i class="fa-solid fa-file-excel"></i> MS Office:</td><td>Office 2019</td></tr>
+                            <tr><td class="label"><i class="fa-solid fa-envelope"></i> Mail:</td><td>Outlook, Gmail</td></tr>
+                            <tr><td class="label"><i class="fa-solid fa-microchip"></i> Hardware:</td><td>Assembling</td></tr>
+                            <tr><td class="label"><i class="fa-solid fa-boxes-packing"></i> Software:</td><td>Oracle Logistics</td></tr>
+                            <tr><td class="label"><i class="fa-solid fa-globe"></i> Browser:</td><td>Chrome, Edge</td></tr>
+                            <tr><td class="label"><i class="fa-solid fa-comments"></i> Messenger:</td><td>Teams, Zoom</td></tr>
+                        </table>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 4px;"><i class="fa-solid fa-bolt"></i> Core Strengths</h3>
+                        <ul>
+                            <li>Well computer knowledge</li>
+                            <li>Good customer service</li>
+                            <li>Good communication skills</li>
+                            <li>Able to work under pressure</li>
+                            <li>Good team work</li>
+                            <li>Able to work shift basis</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education and Language Section -->
+            <section id="education">
+                <h2><i class="fa-solid fa-book-open"></i> Education and Language</h2>
+                <div class="grid-2">
+                    <div>
+                        <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 4px;">Educational Qualification</h3>
+                        <ul>
+                            <li><strong>HSC (12+)</strong> - GPA 2.8 (Year 2004)</li>
+                            <li><strong>SSC (10th)</strong> - GPA 3.13 (Year 2001)<br>
+                            <span style="font-size: 12.5px; color: #555555;">Education Board of Comilla, Bangladesh</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 4px;">Language Proficiency</h3>
+                        <ul>
+                            <li>English</li>
+                            <li>Arabic</li>
+                            <li>Urdu & Hindi</li>
+                            <li>Bengali (Native)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Info Section -->
+            <section id="personal">
+                <h2><i class="fa-solid fa-user"></i> Personal Info</h2>
                 <table class="info-table">
-                    <tr><td class="label">OS:</td><td>Windows 10[span_15](start_span)[span_15](end_span)</td></tr>
-                    <tr><td class="label">MS Office:</td><td>Office 2019[span_16](start_span)[span_16](end_span)</td></tr>
-                    <tr><td class="label">Mail:</td><td>Outlook, Gmail[span_17](start_span)[span_17](end_span)</td></tr>
-                    <tr><td class="label">Hardware:</td><td>Assembling[span_18](start_span)[span_18](end_span)</td></tr>
-                    <tr><td class="label">Software:</td><td>Oracle Logistics[span_19](start_span)[span_19](end_span)</td></tr>
-                    <tr><td class="label">Browser:</td><td>Chrome, Edge[span_20](start_span)[span_20](end_span)</td></tr>
-                    <tr><td class="label">Messenger:</td><td>Teams, WhatsApp[span_21](start_span)[span_21](end_span)</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-calendar"></i> DOB</td><td>: 29 Oct. 1986</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-flag"></i> Nationality</td><td>: Bangladeshi</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-ring"></i> Civil Status</td><td>: Married</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-passport"></i> Passport No</td><td>: A15406824</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-calendar-check"></i> Expiry Date</td><td>: 26 Aug. 2034</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-id-card"></i> Visa Status</td><td>: Employment (Sponsored by G4S Secure Solution, Dubai Br.)</td></tr>
+                    <tr><td class="label"><i class="fa-solid fa-clock"></i> Visa Expiry</td><td>: 28 April 2028</td></tr>
                 </table>
             </section>
 
-            <section>
-                <h2><i class="fa-solid fa-star"></i> Core Strengths</h2>
-                <ul>
-                    <li>Well computer knowledge[span_22](start_span)[span_22](end_span)</li>
-                    <li>Good customer service[span_23](start_span)[span_23](end_span)</li>
-                    <li>Good communication skills[span_24](start_span)[span_24](end_span)</li>
-                    <li>Able to work under pressure[span_25](start_span)[span_25](end_span)</li>
-                    <li>Good team work[span_26](start_span)[span_26](end_span)</li>
-                    <li>Able to work shift basis[span_27](start_span)[span_27](end_span)</li>
-                </ul>
+            <!-- Documents Attachment Section -->
+            <section id="documents">
+                <h2><i class="fa-solid fa-folder-open"></i> Documents Attachment</h2>
+                <div class="cover-letter-box">
+                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1xa6td4ZWxVLPyOuqw9dqsgKcJFWBVew2/view?usp=drivesdk" target="_blank">Fundamental Digital Marketing Courses</a></p>
+                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1vXty1_JjQ8XUb9232TGftuj6DZzexIgi/view?usp=drivesdk" target="_blank">Appreciation Letter by IFFCO</a></p>
+                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1Jb6GK44q9q3n6BqnXzDSke499mXR1T4a/view?usp=drivesdk" target="_blank">Appreciation Letter by G4S</a></p>
+                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1m9RnAK_5XhrX5EJKKSsRDQakHZx0ZJjv/view?usp=drivesdk" target="_blank">Basic Computer Course</a></p>
+                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1F0U6cYYoctfsznQGTgUmhqfhwfkINiPa/view?usp=drivesdk" target="_blank">Basic Hardware Course</a></p>
+                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1bZv-nlBt_vORGh9BJ2_xO12-yhktWVMV/view?usp=drivesdk" target="_blank">Basic Networking Course</a></p>
+                </div>
             </section>
-        </div>
 
-        <!-- Personal Information -->
-        <section style="margin-top: 30px;">
-            <h2><i class="fa-solid fa-user"></i> Personal Information</h2>
-            <table class="info-table">
-                <tr><td class="label">DOB</td><td>: 29 Oct. 1986[span_28](start_span)[span_28](end_span)</td></tr>
-                <tr><td class="label">Nationality</td><td>: Bangladeshi[span_29](start_span)[span_29](end_span)</td></tr>
-                <tr><td class="label">Civil Status</td><td>: Married[span_30](start_span)[span_30](end_span)</td></tr>
-                <tr><td class="label">Passport No</td><td>: A15406824[span_31](start_span)[span_31](end_span)</td></tr>
-                <tr><td class="label">Expiry Date</td><td>: 26 Aug. 2034[span_32](start_span)[span_32](end_span)</td></tr>
-                <tr><td class="label">Visa Status</td><td>: Employment (Sponsored by G4S Secure Solution, Dubai Br.)[span_33](start_span)[span_33](end_span)</td></tr>
-                <tr><td class="label">Visa Expiry</td><td>: 02 May 2026[span_34](start_span)[span_34](end_span)</td></tr>
-            </table>
-        </section>
+            <!-- Declaration Section -->
+            <section id="declaration">
+                <h2><i class="fa-solid fa-signature"></i> Declaration</h2>
+                <div class="declaration-box">
+                    <div class="declaration-text">
+                        <strong>Declaration:</strong><br>
+                        Declaring that the above details are true and correct.
+                    </div>
+                    <div class="signature">
+                        (ABDUL AWAL)
+                    </div>
+                </div>
+            </section>
 
-        <!-- Declaration -->
-        <div class="declaration-box">
-            <div class="declaration-text">
-                <strong>Declaration:</strong><br>
-                Declaring that the above details are true and correct[span_35](start_span)[span_35](end_span).
-            </div>
-            <div class="signature">
-                (ABDUL AWAL)[span_36](start_span)[span_36](end_span)
-            </div>
         </div>
     </div>
-</div>
+
+    <!-- Script for Dark/Light Mode Toggle & Dropdown Auto-Close -->
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            const dropdown = document.getElementById('menu-dropdown');
+            const detailsDropdown = document.getElementById('details-dropdown');
+            detailsDropdown.classList.remove('active');
+            dropdown.classList.toggle('active');
+        }
+
+        function toggleDetailsDropdown(event) {
+            event.stopPropagation();
+            const detailsDropdown = document.getElementById('details-dropdown');
+            const dropdown = document.getElementById('menu-dropdown');
+            dropdown.classList.remove('active');
+            detailsDropdown.classList.toggle('active');
+        }
+
+        function closeDropdowns() {
+            document.getElementById('menu-dropdown').classList.remove('active');
+            document.getElementById('details-dropdown').classList.remove('active');
+        }
+
+        function scrollToHeader() {
+            const headerElement = document.getElementById('header-section');
+            headerElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            closeDropdowns();
+        }
+
+        // Close dropdown when clicking outside
+        window.onclick = function(event) {
+            closeDropdowns();
+        }
+
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeBtn = document.getElementById('theme-toggle');
+            
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.removeAttribute('data-theme');
+                themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light';
+            }
+        }
+    </script>
 
 </body>
 </html>
