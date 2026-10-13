@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Abdul Awal</title>
+    <!-- Google Fonts & FontAwesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --bg-color: #f1f5f9;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .cv-wrapper {
+            max-width: 850px;
+            background: var(--card-bg);
+            margin: 0 auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        /* Top Header Section */
+        .cv-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .header-content h1 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .header-content h3 {
+            font-size: 16px;
+            font-weight: 400;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 14px;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #cbd5e1;
+        }
+
+        .contact-info a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #60a5fa;
+        }
+
+        .profile-img-container {
+            flex-shrink: 0;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            background-color: #334155;
+        }
+
+        /* Body Sections */
+        .cv-body {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 i {
+            color: var(--accent);
+        }
+
+        p.objective {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            font-size: 15px;
+        }
+
+        /* Experience Item */
+        .experience-item {
+            margin-bottom: 20px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 4px;
+        }
+
+        .company-name {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .job-title {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .job-date {
+            font-size: 13px;
+            font-weight: 500;
+            color: #64748b;
+            background: #f1f5f9;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .achievement {
+            font-size: 13px;
+            color: #059669;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        ul.sub-list {
+            list-style-type: circle;
+            margin-top: 4px;
+        }
+
+        li {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        /* Grid Layout for details */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .info-table td {
+            padding: 6px 0;
+            vertical-align: top;
+        }
+
+        .info-table td.label {
+            font-weight: 600;
+            color: var(--primary);
+            width: 40%;
+        }
+
+        .declaration-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .declaration-text {
+            font-size: 14px;
+        }
+
+        .signature {
+            border-top: 1px solid #94a3b8;
+            width: 200px;
+            text-align: center;
+            padding-top: 5px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cv-header {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .contact-info div {
+                justify-content: center;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-wrapper">
+    <!-- Header Section -->
+    <header class="cv-header">
+        <div class="header-content">
+            <h1>Abdul Awal</h1>
+            <h3>Curriculum Vitae (For Administration Job)</h3>
+            <div class="contact-info">
+                <div><i class="fa-solid fa-location-dot"></i> Eiffel Garden-3 (Room #329), Al Waha Street, Al Quoz-3, Dubai, UAE</div>
+                <div><i class="fa-solid fa-phone"></i> <a href="tel:+971528182654">+971 52 818 2654</a></div>
+                <div><i class="fa-solid fa-envelope"></i> <a href="mailto:Maawal86@gmail.com">Maawal86@gmail.com</a></div>
+            </div>
+        </div>
+        <div class="profile-img-container">
+            <!-- আপনার দেওয়া গুগল ড্রাইভের ছবি থেকে ডিরেক্ট লিংক ব্যবহার করা হয়েছে -->
+            <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal" class="profile-img">
+        </div>
+    </header>
+
+    <div class="cv-body">
+        <!-- Career Objective -->
+        <section>
+            <h2><i class="fa-solid fa-bullseye"></i> Career Objective</h2>
+            <p class="objective">To get an opportunity in the well-reputed organization where I can make the best use of my potential and contribute to the organization's growth.</p>
+        </section>
+
+        <!-- Working Experience -->
+        <section>
+            <h2><i class="fa-solid fa-briefcase"></i> Working Experience</h2>
+            
+            <div class="experience-item" style="margin-bottom: 20px;">
+                <div class="exp-header">
+                    <div>
+                        <div class="company-name">G4S Secure Solution LLC, Dubai - An Allied Universal® Company</div>
+                        <div class="job-title">Security Guard</div>
+                    </div>
+                    <div class="job-date">02 May 2012 – Present</div>
+                </div>
+                <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Two-time appreciation letter by G4S, Dubai Br.</div>
+                <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Assignment History:</p>
+                <ul class="sub-list">
+                    <li>Seville Products LLC (Br. - BID) - Security TL</li>
+                    <li>Seville Products LLC (IFFCO Beauty) - Security TL</li>
+                    <li>First Abu Dhabi Bank - Deira Branch - Security</li>
+                    <li>Etisalat - Al Baraha Business Center & Exchange - Security</li>
+                    <li>First Gulf Bank - Retail Sales Office - Security TL</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <div class="company-name">Breeze Trading Services LLC, Abu Dhabi</div>
+                        <div class="job-title">FM Service</div>
+                    </div>
+                    <div class="job-date">31 October 2006 – 13 October 2009</div>
+                </div>
+                <p style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Assignment History:</p>
+                <ul class="sub-list">
+                    <li>Securities and Commodities Authority - IT Department</li>
+                    <li>Al Hoty-Stanger Laboratories - Chemistry Department</li>
+                    <li>Liwa Internet Café</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Key Responsibilities -->
+        <section>
+            <h2><i class="fa-solid fa-tasks"></i> Key Responsibility</h2>
+            <ul>
+                <li>Customer service (Greetings & Support)[span_0](start_span)[span_0](end_span)</li>
+                <li>Supporting HR Manager by doing HR Administration activities like issuance NOC's, Invoice verification, Petty cash dealing, Visa & EMID renewal process, Coordination with worker etc.[span_1](start_span)[span_1](end_span)</li>
+                <li>Access Control and Materials Control as per Client SOP[span_2](start_span)[span_2](end_span)</li>
+                <li>Operating CCTV and report to Client or Seniors if seen any suspicious activities[span_3](start_span)[span_3](end_span)</li>
+                <li>Various reception duty upon request like telephone, inbound/outbound courier, documentation filing etc.[span_4](start_span)[span_4](end_span)</li>
+                <li>Information share with client's or IMC, SMC, BMC & HSE as per Client's SOP[span_5](start_span)[span_5](end_span)</li>
+                <li>Maintaining data entry in logbook, excel book[span_6](start_span)[span_6](end_span)</li>
+                <li>Operating Oracle Logistics for shipment entry/exit, tracing[span_7](start_span)[span_7](end_span)</li>
+                <li>Preparing team attendance and coordinating team activities between client and employer[span_8](start_span)[span_8](end_span).</li>
+            </ul>
+        </section>
+
+        <!-- Training & Course -->
+        <section>
+            <h2><i class="fa-solid fa-graduation-cap"></i> Training & Course</h2>
+            <ul>
+                <li>Security Basic Training by G4S & DPS/SIRA[span_9](start_span)[span_9](end_span)</li>
+                <li>BLS, Fire Fighting & POD Training by SIRA[span_10](start_span)[span_10](end_span)</li>
+                <li>Basic Computer Course by Bhuiyan Computer Academy[span_11](start_span)[span_11](end_span)</li>
+            </ul>
+        </section>
+
+        <!-- Two Column Section -->
+        <div class="grid-2">
+            <section>
+                <h2><i class="fa-solid fa-book"></i> Education</h2>
+                <ul>
+                    <li><strong>HSC (12+)</strong> - GPA 2.8 (Year 2004)[span_12](start_span)[span_12](end_span)</li>
+                    <li><strong>SSC (10<sup>th</sup>)</strong> - GPA 3.13 (Year 2001)[span_13](start_span)[span_13](end_span)<br>
+                    <span style="font-size: 12px; color: #64748b;">Education Board of Comilla, Bangladesh</span>[span_14](start_span)[span_14](end_span)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-language"></i> Languages</h2>
+                <ul>
+                    <li>English</li>
+                    <li>Arabic</li>
+                    <li>Urdu & Hindi</li>
+                    <li>Bengali (Native)</li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="grid-2">
+            <section>
+                <h2><i class="fa-solid fa-laptop-code"></i> Computer Skills</h2>
+                <table class="info-table">
+                    <tr><td class="label">OS:</td><td>Windows 10[span_15](start_span)[span_15](end_span)</td></tr>
+                    <tr><td class="label">MS Office:</td><td>Office 2019[span_16](start_span)[span_16](end_span)</td></tr>
+                    <tr><td class="label">Mail:</td><td>Outlook, Gmail[span_17](start_span)[span_17](end_span)</td></tr>
+                    <tr><td class="label">Hardware:</td><td>Assembling[span_18](start_span)[span_18](end_span)</td></tr>
+                    <tr><td class="label">Software:</td><td>Oracle Logistics[span_19](start_span)[span_19](end_span)</td></tr>
+                    <tr><td class="label">Browser:</td><td>Chrome, Edge[span_20](start_span)[span_20](end_span)</td></tr>
+                    <tr><td class="label">Messenger:</td><td>Teams, WhatsApp[span_21](start_span)[span_21](end_span)</td></tr>
+                </table>
+            </section>
+
+            <section>
+                <h2><i class="fa-solid fa-star"></i> Core Strengths</h2>
+                <ul>
+                    <li>Well computer knowledge[span_22](start_span)[span_22](end_span)</li>
+                    <li>Good customer service[span_23](start_span)[span_23](end_span)</li>
+                    <li>Good communication skills[span_24](start_span)[span_24](end_span)</li>
+                    <li>Able to work under pressure[span_25](start_span)[span_25](end_span)</li>
+                    <li>Good team work[span_26](start_span)[span_26](end_span)</li>
+                    <li>Able to work shift basis[span_27](start_span)[span_27](end_span)</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- Personal Information -->
+        <section style="margin-top: 30px;">
+            <h2><i class="fa-solid fa-user"></i> Personal Information</h2>
+            <table class="info-table">
+                <tr><td class="label">DOB</td><td>: 29 Oct. 1986[span_28](start_span)[span_28](end_span)</td></tr>
+                <tr><td class="label">Nationality</td><td>: Bangladeshi[span_29](start_span)[span_29](end_span)</td></tr>
+                <tr><td class="label">Civil Status</td><td>: Married[span_30](start_span)[span_30](end_span)</td></tr>
+                <tr><td class="label">Passport No</td><td>: A15406824[span_31](start_span)[span_31](end_span)</td></tr>
+                <tr><td class="label">Expiry Date</td><td>: 26 Aug. 2034[span_32](start_span)[span_32](end_span)</td></tr>
+                <tr><td class="label">Visa Status</td><td>: Employment (Sponsored by G4S Secure Solution, Dubai Br.)[span_33](start_span)[span_33](end_span)</td></tr>
+                <tr><td class="label">Visa Expiry</td><td>: 02 May 2026[span_34](start_span)[span_34](end_span)</td></tr>
+            </table>
+        </section>
+
+        <!-- Declaration -->
+        <div class="declaration-box">
+            <div class="declaration-text">
+                <strong>Declaration:</strong><br>
+                Declaring that the above details are true and correct[span_35](start_span)[span_35](end_span).
+            </div>
+            <div class="signature">
+                (ABDUL AWAL)[span_36](start_span)[span_36](end_span)
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
