@@ -11,29 +11,31 @@
         :root {
             --primary: #0f172a;
             --accent: #2563eb;
-            --accent-hover: #1d4ed8;
-            --bg-color: #f1f5f9;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #1e293b;
             --text-heading: #0f172a;
-            --border: #cbd5e1;
+            --border: #e2e8f0;
             --sidebar-bg: #0f172a;
             --sidebar-text: #e2e8f0;
             --sidebar-text-hover: #ffffff;
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.05);
         }
 
         [data-theme="dark"] {
             --primary: #f8fafc;
             --accent: #38bdf8;
-            --accent-hover: #7dd3fc;
-            --bg-color: #0b0f19;
-            --card-bg: #1e293b;
-            --text-main: #f1f5f9;
+            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+            --bg-color: #070a13;
+            --card-bg: #111827;
+            --text-main: #f3f4f6;
             --text-heading: #ffffff;
-            --border: #475569;
-            --sidebar-bg: #090d16;
-            --sidebar-text: #f1f5f9;
+            --border: #1f2937;
+            --sidebar-bg: #030712;
+            --sidebar-text: #f3f4f6;
             --sidebar-text-hover: #ffffff;
+            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 1px 1px rgba(255, 255, 255, 0.05);
         }
 
         * {
@@ -51,19 +53,19 @@
             font-family: 'Times New Roman', Times, serif;
             background-color: var(--bg-color);
             color: var(--text-main);
-            line-height: 1.6;
-            font-size: 15px;
+            line-height: 1.5;
+            font-size: 14.5px;
             font-weight: 500;
-            transition: background 0.3s, color 0.3s;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         /* Top Bar Control (Theme & Print) */
         .top-controls {
             position: fixed;
-            top: 15px;
-            right: 20px;
+            top: 20px;
+            right: 25px;
             display: flex;
-            gap: 10px;
+            gap: 12px;
             z-index: 1100;
         }
 
@@ -71,28 +73,29 @@
             background: var(--card-bg);
             border: 1px solid var(--border);
             color: var(--text-heading);
-            padding: 8px 14px;
-            border-radius: 20px;
+            padding: 9px 16px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 13px;
             font-weight: bold;
             display: flex;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: all 0.2s ease;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .control-btn:hover {
             background: var(--accent);
             color: #ffffff;
             border-color: var(--accent);
+            transform: translateY(-2px);
         }
 
         /* Main Portfolio Grid Wrapper */
         .portfolio-container {
-            max-width: 1100px;
-            margin: 40px auto;
+            max-width: 1150px;
+            margin: 50px auto;
             display: grid;
             grid-template-columns: 320px 1fr;
             gap: 25px;
@@ -103,7 +106,7 @@
         .sidebar {
             background: var(--sidebar-bg);
             color: var(--sidebar-text);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 30px 20px;
             display: flex;
             flex-direction: column;
@@ -111,25 +114,31 @@
             text-align: center;
             height: fit-content;
             position: sticky;
-            top: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border: 1px solid var(--border);
+            top: 30px;
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .profile-img-container {
             width: 120px;
             height: 145px;
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
             border: 3px solid var(--accent);
             margin-bottom: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            position: relative;
         }
 
         .profile-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: scale(1.05);
         }
 
         .sidebar h1 {
@@ -144,7 +153,7 @@
             color: var(--accent);
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .sidebar-contact {
@@ -153,8 +162,8 @@
             font-size: 13px;
             border-top: 1px solid rgba(255,255,255,0.15);
             border-bottom: 1px solid rgba(255,255,255,0.15);
-            padding: 15px 0;
-            margin-bottom: 20px;
+            padding: 14px 0;
+            margin-bottom: 18px;
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -172,6 +181,7 @@
             color: var(--accent);
             width: 16px;
             text-align: center;
+            font-size: 13px;
         }
 
         .sidebar-contact a {
@@ -200,21 +210,22 @@
             gap: 12px;
             color: var(--sidebar-text);
             text-decoration: none;
-            padding: 9px 12px;
-            border-radius: 6px;
-            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 13.5px;
             font-weight: 600;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .sidebar-nav a:hover, .sidebar-nav a.active {
-            background: var(--accent);
+            background: var(--accent-gradient);
             color: var(--sidebar-text-hover);
-            transform: translateX(4px);
+            transform: translateX(6px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         }
 
         .sidebar-nav i {
-            width: 18px;
+            width: 16px;
             text-align: center;
         }
 
@@ -227,17 +238,23 @@
 
         .card {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 16px;
             padding: 25px 30px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            box-shadow: var(--shadow);
             border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
         }
 
         h2 {
-            font-size: 17px;
+            font-size: 16.5px;
             color: var(--text-heading);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
             border-bottom: 2px solid var(--accent);
             padding-bottom: 4px;
             margin-bottom: 15px;
@@ -249,16 +266,16 @@
 
         h2 i {
             color: var(--accent);
-            font-size: 16px;
+            font-size: 15px;
         }
 
         /* Cover Letter Box */
         .cover-letter-box {
             background: var(--bg-color);
             padding: 16px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             border-left: 4px solid var(--accent);
-            font-size: 14.5px;
+            font-size: 14px;
             text-align: justify;
             border-top: 1px solid var(--border);
             border-right: 1px solid var(--border);
@@ -285,7 +302,7 @@
 
         /* Experience Item */
         .experience-item {
-            margin-bottom: 15px;
+            margin-bottom: 14px;
         }
 
         .exp-header {
@@ -299,14 +316,14 @@
         .company-name {
             font-weight: bold;
             color: var(--text-heading);
-            font-size: 15.5px;
+            font-size: 15px;
         }
 
         .job-title {
             font-weight: bold;
             color: var(--accent);
-            font-size: 14.5px;
-            margin-bottom: 4px;
+            font-size: 14px;
+            margin-bottom: 3px;
         }
 
         .job-date {
@@ -314,7 +331,7 @@
             color: var(--text-main);
             background: var(--card-bg);
             padding: 2px 8px;
-            border-radius: 4px;
+            border-radius: 6px;
             border: 1px solid var(--border);
             font-weight: 600;
         }
@@ -340,8 +357,8 @@
         }
 
         li {
-            font-size: 14px;
-            margin-bottom: 5px;
+            font-size: 13.5px;
+            margin-bottom: 4px;
         }
 
         /* Grid Layout inside Cards */
@@ -355,11 +372,11 @@
         .info-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         .info-table td {
-            padding: 5px 0;
+            padding: 4px 0;
             vertical-align: top;
         }
 
@@ -373,13 +390,13 @@
         .declaration-box {
             background: var(--bg-color);
             padding: 16px 20px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
             gap: 20px;
             border: 1px solid var(--border);
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         .signature {
@@ -388,15 +405,15 @@
             text-align: center;
             padding-top: 4px;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13.5px;
             color: var(--text-heading);
         }
 
-        /* Modern Print Settings (2 Pages) */
+        /* Ultra-Optimized Compact Print Settings (Strictly 2 Pages) */
         @media print {
             @page {
                 size: A4;
-                margin: 10mm;
+                margin: 6mm;
             }
             .top-controls, .sidebar-nav {
                 display: none !important;
@@ -404,7 +421,8 @@
             body {
                 background: #ffffff !important;
                 color: #000000 !important;
-                font-size: 10.5pt;
+                font-size: 9.5pt;
+                line-height: 1.25;
             }
             .portfolio-container {
                 display: block !important;
@@ -421,36 +439,54 @@
                 flex-direction: row !important;
                 flex-wrap: wrap;
                 justify-content: space-around;
-                padding: 15px !important;
-                margin-bottom: 15px;
-                border-radius: 6px;
+                padding: 8px 12px !important;
+                margin-bottom: 8px;
+                border-radius: 4px;
             }
             .profile-img-container {
-                width: 70px;
-                height: 85px;
+                width: 55px;
+                height: 65px;
                 margin-bottom: 0 !important;
+                border-width: 2px !important;
             }
             .sidebar-contact {
                 border: none !important;
                 padding: 0 !important;
                 margin: 0 !important;
-                font-size: 11px;
+                font-size: 10px;
                 color: #ffffff !important;
+                gap: 3px !important;
             }
             .sidebar-contact div, .sidebar-contact a {
                 color: #ffffff !important;
             }
-            .sidebar h1 { font-size: 18px; }
-            .sidebar h3 { font-size: 12px; margin-bottom: 0; }
+            .sidebar h1 { font-size: 15px; margin-bottom: 0; }
+            .sidebar h3 { font-size: 10.5px; margin-bottom: 0; }
             .main-content {
-                gap: 12px !important;
+                gap: 8px !important;
             }
             .card {
                 box-shadow: none !important;
                 border: 1px solid #cbd5e1 !important;
-                padding: 15px !important;
-                margin-bottom: 12px;
+                padding: 10px 14px !important;
+                margin-bottom: 8px;
                 page-break-inside: avoid;
+                transform: none !important;
+            }
+            h2 {
+                font-size: 11pt !important;
+                margin-bottom: 6px !important;
+                padding-bottom: 2px !important;
+            }
+            p, li, td {
+                font-size: 9pt !important;
+                margin-bottom: 3px !important;
+            }
+            .cover-letter-box {
+                padding: 8px 12px !important;
+            }
+            .declaration-box {
+                padding: 8px 12px !important;
             }
             #home-card {
                 page-break-after: always;
@@ -494,8 +530,10 @@
             <div class="profile-img-container">
                 <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal" class="profile-img">
             </div>
-            <h1>Abdul Awal</h1>
-            <h3>Professional Profile</h3>
+            <div>
+                <h1>Abdul Awal</h1>
+                <h3>Professional Profile</h3>
+            </div>
 
             <div class="sidebar-contact">
                 <div><i class="fa-solid fa-location-dot"></i> Al Quoz 4, Dubai, UAE</div>
@@ -554,7 +592,7 @@
                     <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Two-time appreciation letter by G4S, Dubai Br.</div>
                     <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Certificate of Appreciation from IFFCO (Dated: 23 Feb 2025)</div>
                     
-                    <p style="font-size: 13.5px; font-weight: bold; margin-top: 8px; margin-bottom: 2px;">Assignment History:</p>
+                    <p style="font-size: 13.5px; font-weight: bold; margin-top: 6px; margin-bottom: 2px;">Assignment History:</p>
                     <ul class="sub-list">
                         <li>Seville Products LLC (Br. - BID) - Security TL</li>
                         <li>Seville Products LLC (IFFCO Beauty) - Security TL</li>
@@ -565,7 +603,7 @@
                 </div>
 
                 <!-- Key Responsibilities -->
-                <div style="margin-top: 15px;">
+                <div style="margin-top: 14px;">
                     <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 6px; text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-tasks"></i> Key Responsibilities</h3>
                     <ul>
                         <li>Providing professional customer service (greetings and support).</li>
@@ -585,7 +623,7 @@
             <section class="card" id="skills-card">
                 <h2><i class="fa-solid fa-graduation-cap"></i> Training and Skill</h2>
                 
-                <div style="margin-bottom: 15px;">
+                <div style="margin-bottom: 14px;">
                     <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 4px; font-weight: bold;"><i class="fa-solid fa-certificate"></i> Training & Courses</h3>
                     <ul>
                         <li>Security Basic Training by G4S & DPS/SIRA</li>
@@ -712,7 +750,7 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 100)) {
+                if (window.scrollY >= (sectionTop - 120)) {
                     current = section.getAttribute('id');
                 }
             });
