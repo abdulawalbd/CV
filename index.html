@@ -108,24 +108,30 @@
       overflow-wrap: anywhere;
     }
     .contact .symbol { width: 16px; color: var(--cyan); text-align: center; font-weight: bold; }
-    .nav { display: grid; gap: 4px; }
+    
+    /* Perfect Aligned Navigation Section */
+    .nav { display: grid; gap: 6px; }
+    .nav-single { display: flex; justify-content: center; width: 100%; }
+    .nav-grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
+    
     .nav a {
       display: flex;
       align-items: center;
-      gap: 9px;
-      padding: 7px 9px;
+      justify-content: center;
+      width: 100%;
+      padding: 8px 6px;
       border-radius: 7px;
       color: #cbd5e1;
       text-decoration: none;
-      font-size: 11px;
+      font-size: 10.5px;
+      text-align: center;
       transition: 0.2s;
     }
     .nav a:hover {
       color: #fff;
       background: linear-gradient(110deg, #2563eb, #1d4ed8);
-      transform: translateX(3px);
+      transform: translateY(-2px);
     }
-    .num { width: 18px; color: #64748b; font-size: 9px; }
     .foot { text-align: center; margin-top: 18px; color: #cbd5e1; font-size: 8px; }
     .main { display: grid; gap: 14px; min-width: 0; }
     .controls {
@@ -195,7 +201,8 @@
       gap: 12px;
       margin: 4px 0 8px;
     }
-    .company { color: var(--ink); font-weight: 750; font-size: 14px; }
+    .company { display: flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 750; font-size: 14px; }
+    .company img { width: 20px; height: 20px; object-fit: contain; border-radius: 3px; }
     .company small { color: var(--muted); font-size: 10px; font-weight: 500; }
     .role { color: var(--blue); font-weight: 700; }
     .date {
@@ -225,15 +232,25 @@
       text-transform: uppercase;
     }
     .assignments { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-    .assignments span {
+    .assignments a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       padding: 7px 9px;
       border: 1px solid var(--line);
       border-radius: 6px;
       color: var(--ink);
+      text-decoration: none;
       font-size: 10px;
       font-weight: 650;
       background: color-mix(in srgb, var(--paper) 40%, var(--card));
+      transition: border-color 0.2s, background 0.2s;
     }
+    .assignments a:hover {
+      border-color: var(--blue);
+      background: color-mix(in srgb, var(--paper) 70%, var(--card));
+    }
+    .assignments img { width: 16px; height: 16px; object-fit: contain; border-radius: 2px; flex-shrink: 0; }
     .assignments small { display: block; color: var(--muted); font-weight: 500; }
     .list { margin: 5px 0 0; padding-left: 18px; }
     .list li { margin-bottom: 6px; font-size: 11px; color: var(--text); }
@@ -287,6 +304,9 @@
     .personal small { color: var(--muted); font-size: 9px; font-weight: 500; }
     .documents { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
     .documents a {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 9px 10px;
       border: 1px solid var(--line);
       border-radius: 7px;
@@ -298,7 +318,19 @@
       transition: border-color 0.2s, background 0.2s;
     }
     .documents a:hover { border-color: var(--blue); background: color-mix(in srgb, var(--paper) 70%, var(--card)); }
-    .documents small { display: block; color: var(--muted); font-size: 8.5px; font-weight: 500; }
+    .doc-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .documents small { color: var(--muted); font-size: 8.5px; font-weight: 500; }
+    .doc-icon {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
     .declaration { font-size: 12px; }
     .declaration p { margin: 0 0 9px; }
     .decl-meta { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font: 10px Arial, sans-serif; }
@@ -333,7 +365,6 @@
     @media (max-width: 900px) {
       .layout { grid-template-columns: 1fr; max-width: 750px; margin-top: 68px; }
       .sidebar { position: relative; top: auto; }
-      .nav { grid-template-columns: 1fr 1fr; }
       .controls { top: 12px; right: 14px; }
     }
     @media (max-width: 560px) {
@@ -437,17 +468,24 @@
         <a href="mailto:aawal86@gmail.com"><span class="symbol">✉</span>aawal86@gmail.com</a>
         <a href="https://www.linkedin.com/in/aawal86" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><span class="symbol">in</span>LinkedIn Profile</a>
       </div>
+      
+      <!-- Perfectly Aligned & Centered Navigation Section -->
       <nav class="nav" aria-label="CV sections">
-        <a href="#cover-letter"><span class="num"></span>✉ Cover Letter</a>
-        <a href="#objective"><span class="num"></span>◎ Career Objective</a>
-        <a href="#experience"><span class="num"></span>▣ Experience</a>
-        <a href="#skills"><span class="num"></span>✦ Skills & Training</a>
-        <a href="#education"><span class="num"></span>▤ Education</a>
-        <a href="#personal"><span class="num"></span>♙ Personal Info</a>
-        <a href="#documents"><span class="num"></span>▱ Documents</a>
-        <a href="#declaration"><span class="num"></span>✍ Declaration</a>
-        <a href="#connect"><span class="num"></span>➤ Let's Connect</a>
+        <div class="nav-single">
+          <a href="#cover-letter">✉ Cover Letter</a>
+        </div>
+        <div class="nav-grid-4">
+          <a href="#objective">◎ Objective</a>
+          <a href="#experience">▣ Experience</a>
+          <a href="#skills">✦ Skills</a>
+          <a href="#education">▤ Education</a>
+          <a href="#personal">♙ Personal</a>
+          <a href="#documents">▱ Documents</a>
+          <a href="#declaration">✍ Declaration</a>
+          <a href="#connect">➤ Connect</a>
+        </div>
       </nav>
+
       <div class="foot">DUBAI, UAE</div>
     </aside>
 
@@ -490,7 +528,10 @@
         <h2 class="section-title"><span class="symbol">▣</span>Professional Experience</h2>
         <div class="role-head">
           <div>
-            <div class="company">G4S Secure Solution LLC, Dubai <small>— An Allied Universal Company</small></div>
+            <div class="company">
+              <img src="https://lh3.googleusercontent.com/d/1dADuBP5WZAOVOaP71x6Iw_C_O68Z09Tq" alt="G4S Logo">
+              G4S Secure Solution LLC, Dubai <small>— An Allied Universal Company</small>
+            </div>
             <div class="role">Security Guard / Shift Team Leader</div>
           </div>
           <span class="date">02 May 2012 — Present</span>
@@ -501,10 +542,34 @@
         </div>
         <div class="subhead">Major Client Assignments</div>
         <div class="assignments">
-          <span>Seville Products LLC<small>(IFFCO BID & Beauty) · Security TL</small></span>
-          <span>First Abu Dhabi Bank<small>Deira Branch · Corporate Security</small></span>
-          <span>Etisalat<small>Al Baraha Business Center · Security</small></span>
-          <span>First Gulf Bank<small>Retail Sales Office · Security TL</small></span>
+          <a href="https://drive.google.com/file/d/1N3HEkGtLS0mepSBA1fGm5FvLWbLB0lY1/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+            <img src="https://lh3.googleusercontent.com/d/1N3HEkGtLS0mepSBA1fGm5FvLWbLB0lY1" alt="IFFCO Logo">
+            <div>
+              Seville Products LLC
+              <small>(IFFCO BID & Beauty) · Security TL ↗</small>
+            </div>
+          </a>
+          <a href="https://drive.google.com/file/d/1drhQpNrZgYXSzQrxmmnb6_i0v_HHFGbv/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+            <img src="https://lh3.googleusercontent.com/d/1drhQpNrZgYXSzQrxmmnb6_i0v_HHFGbv" alt="FAB Logo">
+            <div>
+              First Abu Dhabi Bank
+              <small>Deira Branch · Corporate Security ↗</small>
+            </div>
+          </a>
+          <a href="https://drive.google.com/file/d/1PEhmfTVx93TXDY2Q9LpJZrWEjio4MV4W/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+            <img src="https://lh3.googleusercontent.com/d/1PEhmfTVx93TXDY2Q9LpJZrWEjio4MV4W" alt="Etisalat Logo">
+            <div>
+              Etisalat
+              <small>Al Baraha Business Center · Security ↗</small>
+            </div>
+          </a>
+          <a href="https://drive.google.com/file/d/1otmqyHimfQlnJQjR0661mcKC13PDLVgN/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">
+            <img src="https://lh3.googleusercontent.com/d/1otmqyHimfQlnJQjR0661mcKC13PDLVgN" alt="FGB Logo">
+            <div>
+              First Gulf Bank
+              <small>Retail Sales Office · Security TL ↗</small>
+            </div>
+          </a>
         </div>
         <div class="subhead">Key Responsibilities & Administrative Duties</div>
         <ul class="list two-col">
@@ -590,12 +655,48 @@
         <div class="kicker"><span>SUPPORTING MATERIAL</span></div>
         <h2 class="section-title"><span class="symbol">▱</span>Verified Certificates & Credentials</h2>
         <div class="documents">
-          <a href="https://drive.google.com/file/d/1xa6td4ZWxVLPyOuqw9dqsgKcJFWBVew2/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Digital Marketing Course">Fundamental Digital Marketing Course<small>View Document ↗</small></a>
-          <a href="https://drive.google.com/file/d/1vXty1_JjQ8XUb9232TGftuj6DZzexIgi/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View IFFCO Appreciation Letter">Appreciation Letter - IFFCO<small>View Document ↗</small></a>
-          <a href="https://drive.google.com/file/d/1Jb6GK44q9q3n6BqnXzDSke499mXR1T4a/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View G4S Appreciation Letter">Appreciation Letter - G4S<small>View Document ↗</small></a>
-          <a href="https://drive.google.com/file/d/1m9RnAK_5XhrX5EJKKSsRDQakHZx0ZJjv/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Basic Computer Course">Basic Computer Course Certificate<small>View Document ↗</small></a>
-          <a href="https://drive.google.com/file/d/1F0U6cYYoctfsznQGTgUmhqfhwfkINiPa/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Hardware Course">Basic Hardware Course<small>View Document ↗</small></a>
-          <a href="https://drive.google.com/file/d/1bZv-nlBt_vORGh9BJ2_xO12-yhktWVMV/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Network Course">Basic Network Course<small>View Document ↗</small></a>
+          <a href="https://drive.google.com/file/d/1WVSd0JrmM79UyzjvMybH2SlHb29MuCeG/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Digital Marketing Course">
+            <div class="doc-content">
+              Fundamental Digital Marketing Course
+              <small>View Document ↗</small>
+            </div>
+            <img class="doc-icon" src="https://lh3.googleusercontent.com/d/1WVSd0JrmM79UyzjvMybH2SlHb29MuCeG" alt="Marketing Icon">
+          </a>
+          <a href="https://drive.google.com/file/d/1vXty1_JjQ8XUb9232TGftuj6DZzexIgi/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View IFFCO Appreciation Letter">
+            <div class="doc-content">
+              Appreciation Letter - IFFCO
+              <small>View Document ↗</small>
+            </div>
+            <img class="doc-icon" src="https://lh3.googleusercontent.com/d/1N3HEkGtLS0mepSBA1fGm5FvLWbLB0lY1" alt="IFFCO Icon">
+          </a>
+          <a href="https://drive.google.com/file/d/1Jb6GK44q9q3n6BqnXzDSke499mXR1T4a/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View G4S Appreciation Letter">
+            <div class="doc-content">
+              Appreciation Letter - G4S
+              <small>View Document ↗</small>
+            </div>
+            <img class="doc-icon" src="https://lh3.googleusercontent.com/d/1dADuBP5WZAOVOaP71x6Iw_C_O68Z09Tq" alt="G4S Icon">
+          </a>
+          <a href="https://drive.google.com/file/d/1Fe5SrhZwGv3yz7tSNy0QuVlmMKesGLf7/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Basic Computer Course">
+            <div class="doc-content">
+              Basic Computer Course Certificate
+              <small>View Document ↗</small>
+            </div>
+            <img class="doc-icon" src="https://lh3.googleusercontent.com/d/1Fe5SrhZwGv3yz7tSNy0QuVlmMKesGLf7" alt="Computer Icon">
+          </a>
+          <a href="https://drive.google.com/file/d/1Fe5SrhZwGv3yz7tSNy0QuVlmMKesGLf7/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Hardware Course">
+            <div class="doc-content">
+              Basic Hardware Course
+              <small>View Document ↗</small>
+            </div>
+            <img class="doc-icon" src="https://lh3.googleusercontent.com/d/1Fe5SrhZwGv3yz7tSNy0QuVlmMKesGLf7" alt="Hardware Icon">
+          </a>
+          <a href="https://drive.google.com/file/d/1Fe5SrhZwGv3yz7tSNy0QuVlmMKesGLf7/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" title="View Network Course">
+            <div class="doc-content">
+              Basic Network Course
+              <small>View Document ↗</small>
+            </div>
+            <img class="doc-icon" src="https://lh3.googleusercontent.com/d/1Fe5SrhZwGv3yz7tSNy0QuVlmMKesGLf7" alt="Network Icon">
+          </a>
         </div>
       </section>
 
