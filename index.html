@@ -1,827 +1,630 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Awal - Professional Portfolio & CV</title>
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #0f172a;
-            --accent: #2563eb;
-            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-heading: #0f172a;
-            --border: #e2e8f0;
-            --sidebar-bg: #0f172a;
-            --sidebar-text: #e2e8f0;
-            --sidebar-text-hover: #ffffff;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 0 1px 1px rgba(0, 0, 0, 0.05);
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Professional CV and portfolio of Abdul Awal - Administrative Support & Security Operations Specialist in Dubai, UAE.">
+  <title>Abdul Awal — Professional CV & Portfolio</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --navy: #10213a;
+      --blue: #2563eb;
+      --cyan: #38bdf8;
+      --paper: #f2f5f9;
+      --card: #ffffff;
+      --ink: #14243a;
+      --text: #314158;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --side: #0d1c31;
+      --shadow: 0 8px 24px rgba(20, 36, 58, 0.06);
+    }
+    [data-theme="dark"] {
+      color-scheme: dark;
+      --navy: #eaf2fc;
+      --blue: #38bdf8;
+      --cyan: #7dd3fc;
+      --paper: #080f1b;
+      --card: #111d2e;
+      --ink: #f4f7fc;
+      --text: #d7e0ed;
+      --muted: #8d9bb0;
+      --line: #26354a;
+      --side: #050c17;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--text);
+      font: 13px/1.6 Inter, system-ui, Arial, sans-serif;
+      transition: background 0.2s, color 0.2s;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 285px minmax(0, 1fr);
+      gap: 26px;
+      align-items: start;
+      max-width: 1200px;
+      margin: 38px auto;
+      padding: 0 22px;
+    }
+    .sidebar {
+      position: sticky;
+      top: 24px;
+      padding: 26px 20px 16px;
+      border-radius: 16px;
+      color: #dce5f1;
+      background: var(--side);
+      box-shadow: 0 22px 55px rgba(12, 25, 42, 0.15);
+    }
+    .portrait {
+      width: 110px;
+      height: 132px;
+      margin: 0 auto 16px;
+      overflow: hidden;
+      border: 2px solid var(--blue);
+      border-radius: 8px;
+    }
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .identity { text-align: center; }
+    .eyebrow, .kicker, .foot, .connect-label {
+      font-size: 9px;
+      font-weight: 750;
+      letter-spacing: 0.14em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+    .identity h1 { margin: 5px 0 1px; color: #fff; font: 700 25px/1.2 Georgia, serif; }
+    .identity p { margin: 0; color: #a8b7ca; font-size: 11px; }
+    .contact {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 16px;
+      padding: 14px 0;
+      border-block: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .contact a, .contact div {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: #dce5f1;
+      text-decoration: none;
+      font-size: 11px;
+      overflow-wrap: anywhere;
+    }
+    .contact .symbol { width: 16px; color: var(--cyan); text-align: center; font-weight: bold; }
+    .nav { display: grid; gap: 4px; }
+    .nav a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 9px;
+      border-radius: 7px;
+      color: #c7d2e1;
+      text-decoration: none;
+      font-size: 11px;
+      transition: 0.2s;
+    }
+    .nav a:hover {
+      color: #fff;
+      background: linear-gradient(110deg, #2563eb, #1748ae);
+      transform: translateX(3px);
+    }
+    .num { width: 18px; color: #7788a0; font-size: 9px; }
+    .foot { text-align: center; margin-top: 18px; color: #8091a8; font-size: 8px; }
+    .main { display: grid; gap: 14px; min-width: 0; }
+    .controls {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 5;
+      display: flex;
+      gap: 8px;
+    }
+    .control {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--card);
+      color: var(--ink);
+      font: 600 12px Arial, sans-serif;
+      text-decoration: none;
+      box-shadow: 0 5px 18px rgba(11, 23, 35, 0.1);
+      cursor: pointer;
+    }
+    .control:hover { border-color: var(--blue); background: var(--blue); color: #fff; }
+    .card {
+      padding: 21px 25px 23px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      scroll-margin-top: 20px;
+    }
+    .kicker { margin-bottom: 5px; color: var(--blue); font-size: 8px; }
+    .kicker span { margin-left: 6px; color: var(--muted); letter-spacing: 0.16em; }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 13px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+      color: var(--ink);
+      font: 700 17px/1.3 Georgia, serif;
+    }
+    .section-title .symbol { color: var(--blue); }
+    .letter, .objective, .declaration {
+      padding: 13px 16px;
+      border-left: 3px solid var(--blue);
+      border-radius: 3px 8px 8px 3px;
+      background: color-mix(in srgb, var(--paper) 70%, var(--card));
+      font: 12px/1.62 Georgia, serif;
+    }
+    .letter p { margin: 0 0 8px; }
+    .letter p:last-child { margin-bottom: 0; }
+    .letter strong { color: var(--ink); }
+    .objective { display: flex; align-items: center; gap: 12px; }
+    .objective p { margin: 0; font-size: 13.5px; color: var(--ink); }
+    .quote { font: 54px/0.8 Georgia, serif; color: var(--blue); }
+    .role-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin: 4px 0 8px;
+    }
+    .company { color: var(--ink); font-weight: 750; font-size: 14px; }
+    .company small { color: var(--muted); font-size: 10px; font-weight: 500; }
+    .role { color: var(--blue); font-weight: 700; }
+    .date {
+      flex: none;
+      padding: 4px 8px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+    .achievements {
+      display: grid;
+      gap: 3px;
+      margin: 9px 0 13px;
+      color: #059669;
+      font-size: 11px;
+      font-weight: 650;
+    }
+    .subhead {
+      margin: 12px 0 6px;
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+    .assignments { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .assignments span {
+      padding: 7px 9px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      font-size: 10px;
+      font-weight: 650;
+    }
+    .assignments small { display: block; color: var(--muted); font-weight: 500; }
+    .list { margin: 5px 0 0; padding-left: 18px; }
+    .list li { margin-bottom: 5px; font-size: 11px; }
+    .list li::marker { color: var(--blue); }
+    .two-col { columns: 2; column-gap: 26px; }
+    .two-col li { break-inside: avoid; }
+    .training {
+      padding: 10px 12px;
+      border-radius: 7px;
+      background: color-mix(in srgb, var(--paper) 70%, var(--card));
+      font-size: 11px;
+    }
+    .training b { color: var(--ink); }
+    .training p { margin: 4px 0 0; color: var(--text); }
+    .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 15px; }
+    .detail-grid h3 { margin: 0 0 8px; color: var(--ink); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .rows { display: grid; }
+    .rows div {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 10px;
+    }
+    .rows span { color: var(--muted); }
+    .rows b { text-align: right; color: var(--ink); }
+    .pills, .languages { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pills span, .languages span {
+      padding: 5px 8px;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      font-size: 10px;
+      background: color-mix(in srgb, var(--paper) 40%, var(--card));
+    }
+    .education {
+      display: flex;
+      justify-content: space-between;
+      max-width: 310px;
+      padding: 6px 0;
+      border-bottom: 1px dashed var(--line);
+      font-size: 11px;
+    }
+    .education b { color: var(--ink); }
+    .education span { color: var(--muted); }
+    .personal { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+    .personal div { display: grid; gap: 2px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .personal span { color: var(--muted); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .personal b { color: var(--ink); font-size: 11px; }
+    .personal small { color: var(--muted); font-size: 9px; font-weight: 500; }
+    .documents { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+    .documents a {
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 650;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .documents a:hover { border-color: var(--blue); background: color-mix(in srgb, var(--paper) 50%, var(--card)); }
+    .documents small { display: block; color: var(--muted); font-size: 8.5px; font-weight: 500; }
+    .declaration { font-size: 12px; }
+    .declaration p { margin: 0 0 9px; }
+    .decl-meta { display: flex; flex-wrap: wrap; gap: 14px; color: var(--muted); font: 10px Arial, sans-serif; }
+    .connect {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 21px 24px;
+      border-radius: 12px;
+      color: #fff;
+      background: linear-gradient(115deg, #10233d, #173c68 72%, #17528c);
+    }
+    .connect h2 { margin: 3px 0; color: #fff; font: 700 22px Georgia, serif; }
+    .connect p { margin: 0; color: #d1dfef; font-size: 10px; }
+    .connect-links { display: flex; gap: 7px; flex-wrap: wrap; }
+    .connect-links a {
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 6px;
+      color: #fff;
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 650;
+      transition: background 0.2s, color 0.2s;
+    }
+    .connect-links a:hover { background: #fff; color: #10233d; }
+    .page-foot { display: flex; justify-content: space-between; padding: 2px 5px; color: var(--muted); font-size: 8px; letter-spacing: 0.1em; }
+    .page-foot b { color: var(--ink); }
+    .print-header { display: none; }
 
-        [data-theme="dark"] {
-            --primary: #f8fafc;
-            --accent: #38bdf8;
-            --accent-gradient: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
-            --bg-color: #070a13;
-            --card-bg: #111827;
-            --text-main: #f3f4f6;
-            --text-heading: #ffffff;
-            --border: #1f2937;
-            --sidebar-bg: #030712;
-            --sidebar-text: #f3f4f6;
-            --sidebar-text-hover: #ffffff;
-            --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 1px 1px rgba(255, 255, 255, 0.05);
-        }
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; max-width: 750px; margin-top: 68px; }
+      .sidebar { position: relative; top: auto; }
+      .nav { grid-template-columns: 1fr 1fr; }
+      .controls { top: 12px; right: 14px; }
+    }
+    @media (max-width: 560px) {
+      .layout { padding: 0 10px; gap: 13px; }
+      .sidebar { padding: 22px 15px 14px; }
+      .card { padding: 17px 15px; }
+      .assignments, .detail-grid, .personal, .documents { grid-template-columns: 1fr; }
+      .two-col { columns: 1; }
+      .role-head { flex-direction: column; gap: 4px; }
+      .connect { align-items: flex-start; flex-direction: column; padding: 19px; }
+      .connect-links { width: 100%; }
+      .connect-links a { flex: 1; text-align: center; }
+      .page-foot { font-size: 7px; gap: 7px; }
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 30px;
-        }
-
-        body {
-            font-family: 'Times New Roman', Times, serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.5;
-            font-size: 14.5px;
-            font-weight: 500;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        /* Top Bar Control (Theme & Print) */
-        .top-controls {
-            position: fixed;
-            top: 20px;
-            right: 25px;
-            display: flex;
-            gap: 12px;
-            z-index: 1100;
-        }
-
-        .control-btn {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            color: var(--text-heading);
-            padding: 9px 16px;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .control-btn:hover {
-            background: var(--accent);
-            color: #ffffff;
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        /* Main Portfolio Grid Wrapper */
-        .portfolio-container {
-            max-width: 1150px;
-            margin: 50px auto;
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 25px;
-            padding: 0 20px;
-        }
-
-        /* Sidebar Profile Section */
-        .sidebar {
-            background: var(--sidebar-bg);
-            color: var(--sidebar-text);
-            border-radius: 16px;
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            height: fit-content;
-            position: sticky;
-            top: 30px;
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
-        .profile-img-container {
-            width: 120px;
-            height: 145px;
-            border-radius: 10px;
-            overflow: hidden;
-            border: 3px solid var(--accent);
-            margin-bottom: 15px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            position: relative;
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .profile-img-container:hover .profile-img {
-            transform: scale(1.05);
-        }
-
-        .sidebar h1 {
-            color: #ffffff;
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            letter-spacing: 0.5px;
-        }
-
-        .sidebar h3 {
-            color: var(--accent);
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 18px;
-        }
-
-        .sidebar-contact {
-            width: 100%;
-            text-align: left;
-            font-size: 13px;
-            border-top: 1px solid rgba(255,255,255,0.15);
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-            padding: 14px 0;
-            margin-bottom: 18px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .sidebar-contact div {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--sidebar-text);
-            word-break: break-all;
-        }
-
-        .sidebar-contact i {
-            color: var(--accent);
-            width: 16px;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .sidebar-contact a {
-            color: var(--sidebar-text);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .sidebar-contact a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-
-        /* Sidebar Navigation Menu */
-        .sidebar-nav {
-            width: 100%;
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-
-        .sidebar-nav a {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--sidebar-text);
-            text-decoration: none;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 13.5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar-nav a:hover, .sidebar-nav a.active {
-            background: var(--accent-gradient);
-            color: var(--sidebar-text-hover);
-            transform: translateX(6px);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-        }
-
-        .sidebar-nav i {
-            width: 16px;
-            text-align: center;
-        }
-
-        /* Main Content Area */
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px 30px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
-        }
-
-        h2 {
-            font-size: 16.5px;
-            color: var(--text-heading);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            border-bottom: 2px solid var(--accent);
-            padding-bottom: 4px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: bold;
-        }
-
-        h2 i {
-            color: var(--accent);
-            font-size: 15px;
-        }
-
-        /* Cover Letter Box */
-        .cover-letter-box {
-            background: var(--bg-color);
-            padding: 16px 20px;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-            font-size: 14px;
-            text-align: justify;
-            border-top: 1px solid var(--border);
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .cover-letter-box p {
-            margin-bottom: 10px;
-        }
-
-        .cover-letter-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .cover-letter-box a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .cover-letter-box a:hover {
-            text-decoration: underline;
-        }
-
-        /* Experience Item */
-        .experience-item {
-            margin-bottom: 14px;
-        }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 4px;
-        }
-
-        .company-name {
-            font-weight: bold;
-            color: var(--text-heading);
-            font-size: 15px;
-        }
-
-        .job-title {
-            font-weight: bold;
-            color: var(--accent);
-            font-size: 14px;
-            margin-bottom: 3px;
-        }
-
-        .job-date {
-            font-size: 12.5px;
-            color: var(--text-main);
-            background: var(--card-bg);
-            padding: 2px 8px;
-            border-radius: 6px;
-            border: 1px solid var(--border);
-            font-weight: 600;
-        }
-
-        .achievement {
-            font-size: 13px;
-            color: #10b981;
-            margin-bottom: 4px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        ul {
-            list-style-type: disc;
-            padding-left: 18px;
-        }
-
-        ul.sub-list {
-            list-style-type: circle;
-            margin-top: 4px;
-        }
-
-        li {
-            font-size: 13.5px;
-            margin-bottom: 4px;
-        }
-
-        /* Grid Layout inside Cards */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        /* Info Tables */
-        .info-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13.5px;
-        }
-
-        .info-table td {
-            padding: 4px 0;
-            vertical-align: top;
-        }
-
-        .info-table td.label {
-            font-weight: bold;
-            color: var(--text-heading);
-            width: 38%;
-        }
-
-        /* Declaration Box */
-        .declaration-box {
-            background: var(--bg-color);
-            padding: 16px 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 20px;
-            border: 1px solid var(--border);
-            font-size: 13.5px;
-        }
-
-        .signature {
-            border-top: 1px solid var(--text-main);
-            width: 180px;
-            text-align: center;
-            padding-top: 4px;
-            font-weight: bold;
-            font-size: 13.5px;
-            color: var(--text-heading);
-        }
-
-        /* Let's Connect Section Styles */
-        .connect-box {
-            background: var(--bg-color);
-            padding: 16px 20px;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            font-size: 14px;
-        }
-
-        .connect-buttons {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 15px;
-        }
-
-        .connect-btn {
-            background: #2563eb;
-            color: #ffffff;
-            padding: 10px 18px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 13.5px;
-            font-weight: bold;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .connect-btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        /* Print Settings (Updated to include all sections) */
-        @media print {
-            @page {
-                size: A4;
-                margin: 6mm;
-            }
-            .top-controls, .sidebar-nav {
-                display: none !important;
-            }
-            body {
-                background: #ffffff !important;
-                color: #000000 !important;
-                font-size: 9pt;
-                line-height: 1.2;
-            }
-            .portfolio-container {
-                display: block !important;
-                max-width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-            .sidebar {
-                position: static !important;
-                background: #0f172a !important;
-                color: #ffffff !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                flex-direction: row !important;
-                flex-wrap: wrap;
-                justify-content: space-around;
-                padding: 6px 10px !important;
-                margin-bottom: 6px;
-                border-radius: 4px;
-            }
-            .profile-img-container {
-                width: 45px;
-                height: 55px;
-                margin-bottom: 0 !important;
-                border-width: 2px !important;
-            }
-            .sidebar-contact {
-                border: none !important;
-                padding: 0 !important;
-                margin: 0 !important;
-                font-size: 9.5px;
-                color: #ffffff !important;
-                gap: 2px !important;
-            }
-            .sidebar-contact div, .sidebar-contact a {
-                color: #ffffff !important;
-            }
-            .sidebar h1 { font-size: 13px; margin-bottom: 0; }
-            .sidebar h3 { font-size: 9.5px; margin-bottom: 0; }
-            .main-content {
-                gap: 6px !important;
-            }
-            .card {
-                box-shadow: none !important;
-                border: 1px solid #cbd5e1 !important;
-                padding: 8px 12px !important;
-                margin-bottom: 6px;
-                page-break-inside: avoid;
-                transform: none !important;
-            }
-            h2 {
-                font-size: 10pt !important;
-                margin-bottom: 4px !important;
-                padding-bottom: 2px !important;
-            }
-            p, li, td {
-                font-size: 8.5pt !important;
-                margin-bottom: 2px !important;
-            }
-            .cover-letter-box, .declaration-box, .connect-box {
-                padding: 6px 10px !important;
-                background: #f8fafc !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .connect-buttons {
-                margin-top: 8px;
-                gap: 8px;
-            }
-            .connect-btn {
-                padding: 5px 10px;
-                font-size: 8.5pt;
-                background: #2563eb !important;
-                color: #ffffff !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                box-shadow: none;
-            }
-            #home-card {
-                page-break-after: always;
-            }
-            #objective-card {
-                page-break-before: always;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 850px) {
-            .portfolio-container {
-                grid-template-columns: 1fr;
-            }
-            .sidebar {
-                position: static;
-            }
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media print {
+      @page { size: A4; margin: 10mm 12mm; }
+      body { background: #fff !important; color: #172033 !important; font: 8.5pt/1.35 Arial, sans-serif; }
+      .layout { display: block; max-width: none; margin: 0; padding: 0; }
+      .no-print, .sidebar, .controls { display: none !important; }
+      .main { display: block; }
+      .print-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        padding: 10px 14px;
+        border-left: 4px solid #38bdf8;
+        background: #0f172a !important;
+        color: #fff !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .print-header h1 { margin: 2px 0; color: #fff; font: 16pt Georgia, serif; }
+      .print-header p { margin: 0; color: #7dd3fc; font-size: 7pt; letter-spacing: 0.13em; }
+      .print-header span { color: #d3deeb; font-size: 8pt; }
+      .print-header img { width: 40px; height: 48px; object-fit: cover; object-position: top; border: 1px solid #7dd3fc; }
+      .card, .connect {
+        margin-bottom: 8px;
+        padding: 9px 11px;
+        border: 1px solid #ccd4df !important;
+        border-radius: 4px;
+        background: #fff !important;
+        color: #172033 !important;
+        box-shadow: none;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .kicker { font-size: 6.5pt; }
+      .section-title { margin-bottom: 6px; padding-bottom: 4px; font-size: 11pt; }
+      .letter, .objective, .declaration, .training {
+        padding: 7px 9px;
+        background: #f5f8fc !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .letter { font-size: 8.5pt; line-height: 1.35; }
+      .letter p { margin-bottom: 4px; }
+      .company, .subhead, .detail-grid h3, .personal b, .education b { color: #0f172a !important; }
+      .company { font-size: 10pt; }
+      .company small, .assignments small, .personal small, .rows span, .education span { color: #475569 !important; }
+      .list li, .rows div, .training p { font-size: 8pt; }
+      .two-col { columns: 2; }
+      .detail-grid { gap: 18px; margin-top: 8px; }
+      .rows div { padding: 2px 0; }
+      .documents { gap: 5px; }
+      .documents a { padding: 5px 7px; color: #172033 !important; font-size: 8pt; }
+      .connect {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #10233d !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .connect h2, .connect p, .connect-label { color: #fff !important; }
+      .connect-links a { padding: 5px 7px; color: #fff !important; font-size: 8pt; }
+      .page-foot { color: #64748b !important; }
+      a { text-decoration: none !important; }
+    }
+  </style>
 </head>
 <body>
+  <div class="controls no-print">
+    <button class="control" onclick="window.print()">▤ Print / PDF</button>
+    <button class="control" id="themeToggle" onclick="toggleTheme()">☾ Dark Mode</button>
+  </div>
+  <div class="layout">
+    <aside class="sidebar no-print">
+      <div class="portrait"><img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal Profile Picture"></div>
+      <div class="identity">
+        <span class="eyebrow">PROFESSIONAL PROFILE</span>
+        <h1>Abdul Awal</h1>
+        <p>Administrative Support · Security Operations</p>
+      </div>
+      <div class="contact">
+        <div><span class="symbol">⌖</span>Al Quoz 4, Dubai, UAE</div>
+        <a href="tel:+971528182654"><span class="symbol">☎</span>+971 52 818 2654</a>
+        <a href="mailto:aawal86@gmail.com"><span class="symbol">✉</span>aawal86@gmail.com</a>
+        <a href="https://www.linkedin.com/in/aawal86" target="_blank" rel="noopener noreferrer"><span class="symbol">in</span>LinkedIn Profile</a>
+      </div>
+      <nav class="nav" aria-label="CV sections">
+        <a href="#cover-letter"><span class="num"></span>✉ Cover Letter</a>
+        <a href="#objective"><span class="num"></span>◎ Career Objective</a>
+        <a href="#experience"><span class="num"></span>▣ Experience</a>
+        <a href="#skills"><span class="num"></span>✦ Skills & Training</a>
+        <a href="#education"><span class="num"></span>▤ Education</a>
+        <a href="#personal"><span class="num"></span>♙ Personal Info</a>
+        <a href="#documents"><span class="num"></span>▱ Documents</a>
+        <a href="#declaration"><span class="num"></span>✍ Declaration</a>
+        <a href="#connect"><span class="num"></span>➤ Let's Connect</a>
+      </nav>
+      <div class="foot"> DUBAI, UAE</div>
+    </aside>
 
-    <!-- Controls (Theme & Print) -->
-    <div class="top-controls">
-        <button class="control-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print / PDF</button>
-        <button class="control-btn" id="theme-toggle" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i> Dark Mode</button>
-    </div>
-
-    <div class="portfolio-container">
-        
-        <!-- Sidebar Profile & Navigation -->
-        <aside class="sidebar">
-            <div class="profile-img-container">
-                <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal" class="profile-img">
-            </div>
-            <div>
-                <h1>Abdul Awal</h1>
-                <h3>Professional Profile</h3>
-            </div>
-
-            <div class="sidebar-contact">
-                <div><i class="fa-solid fa-location-dot"></i> Al Quoz 4, Dubai, UAE</div>
-                <div><i class="fa-solid fa-phone"></i> <a href="tel:+971528182654">+971 52 818 2654</a></div>
-                <div><i class="fa-solid fa-envelope"></i> <a href="mailto:aawal86@gmail.com">aawal86@gmail.com</a></div>
-                <div><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/aawal86" target="_blank">linkedin.com/in/aawal86</a></div>
-            </div>
-
-            <ul class="sidebar-nav">
-                <li><a href="#home-card"><i class="fa-solid fa-envelope-open-text"></i> Cover Letter</a></li>
-                <li><a href="#objective-card"><i class="fa-solid fa-bullseye"></i> Career Objective</a></li>
-                <li><a href="#experience-card"><i class="fa-solid fa-briefcase"></i> Experience</a></li>
-                <li><a href="#skills-card"><i class="fa-solid fa-graduation-cap"></i> Skills & Training</a></li>
-                <li><a href="#education-card"><i class="fa-solid fa-book-open"></i> Education</a></li>
-                <li><a href="#personal-card"><i class="fa-solid fa-user"></i> Personal Info</a></li>
-                <li><a href="#documents-card"><i class="fa-solid fa-folder-open"></i> Documents</a></li>
-                <li><a href="#declaration-card"><i class="fa-solid fa-signature"></i> Declaration</a></li>
-                <li><a href="#connect-card"><i class="fa-solid fa-paper-plane"></i> Let's Connect</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content Area -->
-        <main class="main-content">
-            
-            <!-- Cover Letter (Page 1) -->
-            <section class="card" id="home-card">
-                <h2><i class="fa-solid fa-envelope-open-text"></i> Cover Letter</h2>
-                <div class="cover-letter-box">
-                    <p><strong>To,</strong><br>The Hiring Manager,<br>Human Resources Department.</p>
-                    <p><strong>Subject: Application for Administration / Administrative Support Position.</strong></p>
-                    <p>Dear Hiring Manager,</p>
-                    <p>I am writing to express my strong interest in securing an administration opportunity within your esteemed organization. With extensive professional experience in security administration, customer service, and coordination roles—including a long tenure with G4S Secure Solution LLC in Dubai—I have developed a robust skill set in office communication, record keeping, team management, and handling day-to-day administrative tasks effectively.</p>
-                    <p>I am adept at handling high-pressure environments, multitasking, and maintaining professional operational standards as per client SOPs. Thank you for considering my application. I look forward to the opportunity to discuss how my background aligns with your organization's needs.</p>
-                    <p>Sincerely,<br><strong>Abdul Awal</strong></p>
-                </div>
-            </section>
-
-            <!-- Career Objective (Page 2 Starts) -->
-            <section class="card" id="objective-card">
-                <h2><i class="fa-solid fa-bullseye"></i> Career Objective</h2>
-                <div class="cover-letter-box">
-                    <p>To secure a challenging position in a well-reputed organization where I can leverage my skills and potential to contribute significantly to organizational growth.</p>
-                </div>
-            </section>
-
-            <!-- Working Experience Section -->
-            <section class="card" id="experience-card">
-                <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="exp-header">
-                        <div>
-                            <div class="company-name">G4S Secure Solution LLC, Dubai - An Allied Universal Company</div>
-                            <div class="job-title">Security Guard</div>
-                        </div>
-                        <div class="job-date">02 May 2012 – Present</div>
-                    </div>
-                    <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Two-time appreciation letter by G4S, Dubai Br.</div>
-                    <div class="achievement"><i class="fa-solid fa-award"></i> Achievement: Certificate of Appreciation from IFFCO (Dated: 23 Feb 2025)</div>
-                    
-                    <p style="font-size: 13.5px; font-weight: bold; margin-top: 6px; margin-bottom: 2px;">Assignment History:</p>
-                    <ul class="sub-list">
-                        <li>Seville Products LLC (Br. - BID) - Security TL</li>
-                        <li>Seville Products LLC (IFFCO Beauty) - Security TL</li>
-                        <li>First Abu Dhabi Bank - Deira Branch - Security</li>
-                        <li>Etisalat - Al Baraha Business Center & Exchange - Security</li>
-                        <li>First Gulf Bank - Retail Sales Office - Security TL</li>
-                    </ul>
-                </div>
-
-                <!-- Key Responsibilities -->
-                <div style="margin-top: 14px;">
-                    <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 6px; text-transform: uppercase; font-weight: bold;"><i class="fa-solid fa-tasks"></i> Key Responsibilities</h3>
-                    <ul>
-                        <li>Providing professional customer service (greetings and support).</li>
-                        <li>Supporting the HR Manager with HR administration activities such as issuing NOCs, invoice verification, handling petty cash, and processing visa/Emirates ID renewals.</li>
-                        <li>Enforcing access control and material control as per client SOPs.</li>
-                        <li>Operating CCTV systems and reporting any suspicious activities to clients or seniors promptly.</li>
-                        <li>Handling reception duties upon request, including managing telephone calls, inbound/outbound couriers, and documentation filing.</li>
-                        <li>Sharing operational information with clients or IMC, SMC, BMC & HSE according to client SOPs.</li>
-                        <li>Maintaining accurate data entries in logbooks and Excel spreadsheets.</li>
-                        <li>Operating Oracle Logistics for shipment entries, exits, and tracking.</li>
-                        <li>Preparing team attendance and coordinating team activities between clients and the employer.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <!-- Training and Skill Section -->
-            <section class="card" id="skills-card">
-                <h2><i class="fa-solid fa-graduation-cap"></i> Training and Skill</h2>
-                
-                <div style="margin-bottom: 14px;">
-                    <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 4px; font-weight: bold;"><i class="fa-solid fa-certificate"></i> Training & Courses</h3>
-                    <ul>
-                        <li>Security Basic Training by G4S & DPS/SIRA</li>
-                        <li>BLS, Fire Fighting & POD Training by SIRA</li>
-                        <li>Basic Computer Course by Bhuiyan Computer Academy</li>
-                    </ul>
-                </div>
-
-                <div class="grid-2">
-                    <div>
-                        <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 4px; font-weight: bold;"><i class="fa-solid fa-laptop"></i> Computer Knowledge</h3>
-                        <table class="info-table">
-                            <tr><td class="label"><i class="fa-brands fa-windows"></i> OS:</td><td>Windows 10</td></tr>
-                            <tr><td class="label"><i class="fa-solid fa-file-excel"></i> MS Office:</td><td>Office 2019</td></tr>
-                            <tr><td class="label"><i class="fa-solid fa-envelope"></i> Mail:</td><td>Outlook, Gmail</td></tr>
-                            <tr><td class="label"><i class="fa-solid fa-microchip"></i> Hardware:</td><td>Assembling</td></tr>
-                            <tr><td class="label"><i class="fa-solid fa-boxes-packing"></i> Software:</td><td>Oracle Logistics</td></tr>
-                            <tr><td class="label"><i class="fa-solid fa-globe"></i> Browser:</td><td>Chrome, Edge</td></tr>
-                            <tr><td class="label"><i class="fa-solid fa-comments"></i> Messenger:</td><td>Teams, Zoom</td></tr>
-                        </table>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 4px; font-weight: bold;"><i class="fa-solid fa-bolt"></i> Core Strengths</h3>
-                        <ul>
-                            <li>Strong computer literacy</li>
-                            <li>Excellent customer service</li>
-                            <li>Effective communication skills</li>
-                            <li>Ability to work under pressure</li>
-                            <li>Strong team player</li>
-                            <li>Flexible for shift-based work</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Education and Language Section -->
-            <section class="card" id="education-card">
-                <h2><i class="fa-solid fa-book-open"></i> Education and Language</h2>
-                <div class="grid-2">
-                    <div>
-                        <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 4px; font-weight: bold;">Educational Qualification</h3>
-                        <ul>
-                            <li><strong>HSC (12+)</strong> - GPA 2.8 (Year 2004)</li>
-                            <li><strong>SSC (10th)</strong> - GPA 3.13 (Year 2001)<br>
-                            <span style="font-size: 13px; color: var(--text-main); opacity: 0.85;">Education Board of Comilla, Bangladesh</span></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 14.5px; color: var(--text-heading); margin-bottom: 4px; font-weight: bold;">Language Proficiency</h3>
-                        <ul>
-                            <li>English</li>
-                            <li>Arabic</li>
-                            <li>Urdu & Hindi</li>
-                            <li>Bengali (Native)</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Personal Info Section -->
-            <section class="card" id="personal-card">
-                <h2><i class="fa-solid fa-user"></i> Personal Info</h2>
-                <table class="info-table">
-                    <tr><td class="label"><i class="fa-solid fa-calendar"></i> DOB</td><td>: 29 Oct. 1986</td></tr>
-                    <tr><td class="label"><i class="fa-solid fa-flag"></i> Nationality</td><td>: Bangladeshi</td></tr>
-                    <tr><td class="label"><i class="fa-solid fa-ring"></i> Civil Status</td><td>: Married</td></tr>
-                    <tr><td class="label"><i class="fa-solid fa-passport"></i> Passport No</td><td>: A15406824</td></tr>
-                    <tr><td class="label"><i class="fa-solid fa-calendar-check"></i> Expiry Date</td><td>: 26 Aug. 2034</td></tr>
-                    <tr><td class="label"><i class="fa-solid fa-id-card"></i> Visa Status</td><td>: Employment (G4S, Dubai Br.)</td></tr>
-                    <tr><td class="label"><i class="fa-solid fa-clock"></i> Visa Expiry</td><td>: 28 April 2028</td></tr>
-                </table>
-            </section>
-
-            <!-- Documents Attachment Section -->
-            <section class="card" id="documents-card">
-                <h2><i class="fa-solid fa-folder-open"></i> Documents Attachment</h2>
-                <div class="cover-letter-box">
-                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1xa6td4ZWxVLPyOuqw9dqsgKcJFWBVew2/view?usp=drivesdk" target="_blank">Fundamental Digital Marketing Courses</a></p>
-                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1vXty1_JjQ8XUb9232TGftuj6DZzexIgi/view?usp=drivesdk" target="_blank">Appreciation Letter by IFFCO</a></p>
-                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1Jb6GK44q9q3n6BqnXzDSke499mXR1T4a/view?usp=drivesdk" target="_blank">Appreciation Letter by G4S</a></p>
-                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1m9RnAK_5XhrX5EJKKSsRDQakHZx0ZJjv/view?usp=drivesdk" target="_blank">Basic Computer Course</a></p>
-                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1F0U6cYYoctfsznQGTgUmhqfhwfkINiPa/view?usp=drivesdk" target="_blank">Basic Hardware Course</a></p>
-                    <p><i class="fa-solid fa-file-pdf"></i> <a href="https://drive.google.com/file/d/1bZv-nlBt_vORGh9BJ2_xO12-yhktWVMV/view?usp=drivesdk" target="_blank">Basic Networking Course</a></p>
-                </div>
-            </section>
-
-            <!-- Declaration Section -->
-            <section class="card" id="declaration-card">
-                <h2><i class="fa-solid fa-signature"></i> Declaration</h2>
-                <div class="declaration-box">
-                    <div class="declaration-text">
-                        <strong>Declaration:</strong><br>
-                        Declaring that the above details are true and correct.
-                    </div>
-                    <div class="signature">
-                        (ABDUL AWAL)
-                    </div>
-                </div>
-            </section>
-
-            <!-- Let's Connect Section -->
-            <section class="card" id="connect-card">
-                <h2><i class="fa-solid fa-paper-plane"></i> Let's Connect</h2>
-                <div class="connect-box">
-                    <p>Available for professional opportunities in security operations and loss prevention.</p>
-                    <div class="connect-buttons">
-                        <a href="mailto:aawal86@gmail.com" class="connect-btn"><i class="fa-solid fa-envelope"></i> Email Me</a>
-                        <a href="tel:+971528182654" class="connect-btn"><i class="fa-solid fa-phone"></i> Call Phone</a>
-                        <a href="https://www.linkedin.com/in/aawal86" target="_blank" class="connect-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
-                    </div>
-                </div>
-            </section>
-
+    <main class="main">
+      <header class="print-header">
+        <div>
+          <p>CURRICULUM VITAE</p>
+          <h1>Abdul Awal</h1>
+          <span>Al Quoz 4, Dubai, UAE · +971 52 818 2654 · aawal86@gmail.com</span>
         </div>
-    </div>
+        <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal">
+      </header>
 
-    <!-- Script for Theme Toggle & Active Menu Scroll Highlighter -->
-    <script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            const themeBtn = document.getElementById('theme-toggle');
-            
-            if (html.getAttribute('data-theme') === 'dark') {
-                html.removeAttribute('data-theme');
-                themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
-            } else {
-                html.setAttribute('data-theme', 'dark');
-                themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
-            }
-        }
+      <section id="cover-letter" class="card">
+        <div class="kicker"><span>INTRODUCTION</span></div>
+        <h2 class="section-title"><span class="symbol">✉</span>Cover Letter</h2>
+        <div class="letter">
+          <p><strong>To,</strong><br>The Hiring Manager,<br>Human Resources Department.</p>
+          <p><strong>Subject: Application for Administrative Support / Office Operations Coordinator Position.</strong></p>
+          <p>Dear Hiring Manager,</p>
+          <p>I am writing to express my strong interest in an Administrative Support or Office Coordination role within your esteemed organization. Backed by over 14+ years of continuous experience with <strong>G4S Secure Solution LLC in Dubai</strong> across major corporate, banking, and industrial client sites, I have developed extensive experience in document management, ERP tracking (Oracle Logistics), petty cash management, and cross-departmental coordination.</p>
+          <p>Throughout my career—serving in security team leader assignments for clients like Seville Products (IFFCO Group), Etisalat, and First Abu Dhabi Bank—I have routinely performed core administrative duties alongside security administration. These include assisting HR managers with NOC issuances, verifying vendor invoices, maintaining shift registers, managing logistics software entries, and providing professional reception service to visitors and staff.</p>
+          <p>I am recognized for my reliability, attention to detail under pressure, and commitment to SOP compliance. I am eager to bring my multi-faceted background, computer skills, and dedication to your administrative team.</p>
+          <p>Thank you for your time and consideration. I welcome the opportunity to discuss my qualifications in an interview.</p>
+          <p>Sincerely,<br><strong>Abdul Awal</strong></p>
+        </div>
+      </section>
 
-        // Highlight active sidebar link on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.sidebar-nav a');
+      <section id="objective" class="card">
+        <div class="kicker"><span>CAREER DIRECTION</span></div>
+        <h2 class="section-title"><span class="symbol">◎</span>Career Objective</h2>
+        <div class="objective">
+          <span class="quote">“</span>
+          <p>Experienced professional with over 14+ years in Dubai security leadership and facility coordination, seeking a dynamic Administrative Support or Office Operations role. Aiming to leverage strong capabilities in Oracle ERP tracking, document control, petty cash management, and customer relations to enhance operational efficiency.</p>
+        </div>
+      </section>
 
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (window.scrollY >= (sectionTop - 120)) {
-                    current = section.getAttribute('id');
-                }
-            });
+      <section id="experience" class="card">
+        <div class="kicker"><span>CAREER HISTORY</span></div>
+        <h2 class="section-title"><span class="symbol">▣</span>Professional Experience</h2>
+        <div class="role-head">
+          <div>
+            <div class="company">G4S Secure Solution LLC, Dubai <small>— An Allied Universal Company</small></div>
+            <div class="role">Security Guard / Shift Team Leader</div>
+          </div>
+          <span class="date">02 May 2012 — Present</span>
+        </div>
+        <div class="achievements">
+          <div>✦ Certificate of Appreciation from IFFCO <span style="color:var(--muted);font-weight:400">(23 Feb 2025)</span></div>
+          <div>✦ Two-time Letter of Appreciation by G4S Secure Solution, Dubai Branch</div>
+        </div>
+        <div class="subhead">Major Client Assignments</div>
+        <div class="assignments">
+          <span>Seville Products LLC<small>(IFFCO BID & Beauty) · Security TL</small></span>
+          <span>First Abu Dhabi Bank<small>Deira Branch · Corporate Security</small></span>
+          <span>Etisalat<small>Al Baraha Business Center · Security</small></span>
+          <span>First Gulf Bank<small>Retail Sales Office · Security TL</small></span>
+        </div>
+        <div class="subhead">Key Responsibilities & Administrative Duties</div>
+        <ul class="list two-col">
+          <li>Managed reception desk operations, greeting 100+ daily visitors, handling phone calls, and coordinating incoming/outgoing couriers.</li>
+          <li>Supported site HR Managers with NOC drafting, invoice verification, petty cash processing, and staff visa / Emirates ID renewal coordination.</li>
+          <li>Operated Oracle Logistics systems to track daily inbound/outbound material shipments, generate gate passes, and maintain digital logs.</li>
+          <li>Supervised shift security personnel across client facilities, preparing shift rosters, attendance logs, and incident reports.</li>
+          <li>Monitored multi-channel CCTV systems, enforcing site safety protocols and emergency response procedures in compliance with SIRA.</li>
+          <li>Maintained accurate digital logs (MS Excel) and physical record archives for audit readiness.</li>
+        </ul>
+      </section>
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+      <section id="skills" class="card">
+        <div class="kicker"><span>CAPABILITIES</span></div>
+        <h2 class="section-title"><span class="symbol">✦</span>Training & Skills</h2>
+        <div class="training">
+          <b>Professional Qualifications & Certifications</b>
+          <p>• Security Basic Training by G4S & SIRA</p><p>• BLS, Basic Fire Fighting & POD Training by SIRA</p><p>• Fundamental Digital Marketing Certification by Google Workplace</p><p>• Basic Computer & Hardware Course by BCA, Dhaka</p>
+        </div>
+        <div class="detail-grid">
+          <div>
+            <h3>Technical & Computer Literacy</h3>
+            <div class="rows">
+              <div><span>Operating Systems</span><b>Windows 10 / 11</b></div>
+              <div><span>Office Software</span><b>MS Office (Excel, Word, Outlook)</b></div>
+              <div><span>Logistics / ERP</span><b>Oracle Logistics</b></div>
+              <div><span>Communication Tools</span><b>MS Teams, Zoom, Gmail</b></div>
+              <div><span>Hardware / Systems</span><b>Basic PC Hardware & CCTV Controls</b></div>
+            </div>
+          </div>
+          <div>
+            <h3>Core Competencies</h3>
+            <div class="pills">
+              <span>Administrative Support</span>
+              <span>Document Control</span>
+              <span>Customer Service</span>
+              <span>Data Entry (Excel)</span>
+              <span>Invoice Verification</span>
+              <span>Petty Cash Handling</span>
+              <span>Shift Supervision</span>
+              <span>Cross-Functional Teamwork</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      <section id="education" class="card">
+        <div class="kicker"><span>FOUNDATION</span></div>
+        <h2 class="section-title"><span class="symbol">▤</span>Education & Languages</h2>
+        <div class="detail-grid">
+          <div>
+            <h3>Educational Qualification</h3>
+            <div class="education"><b>HSC (12th Grade)</b><span>GPA 2.80 · 2004</span></div>
+            <div class="education"><b>SSC (10th Grade)</b><span>GPA 3.13 · 2001</span></div>
+            <p style="color:var(--muted);font-size:10px;margin-top:6px">Comilla Board, Bangladesh</p>
+          </div>
+          <div>
+            <h3>Language Proficiency</h3>
+            <div class="languages">
+              <span>English <small>· Professional Working</small></span>
+              <span>Arabic <small>· Basic Working</small></span>
+              <span>Hindi & Urdu <small>· Fluent Spoken</small></span>
+              <span>Bengali <small>· Native</small></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="personal" class="card">
+        <div class="kicker"><span>AT A GLANCE</span></div>
+        <h2 class="section-title"><span class="symbol">♙</span>Personal Information</h2>
+        <div class="personal">
+          <div><span>Date of Birth</span><b>29 October 1986</b></div>
+          <div><span>Nationality</span><b>Bangladeshi</b></div>
+          <div><span>Marital Status</span><b>Married</b></div>
+          <div><span>Passport Number</span><b>A15406824 <small>(Expires 26 Aug 2034)</small></b></div>
+          <div><span>Visa Status</span><b>Employment Visa <small>(G4S Dubai · Expires Apr 2028)</small></b></div>
+          <div><span>Location</span><b>Al Quoz 4, Dubai, UAE</b></div>
+        </div>
+      </section>
+
+      <section id="documents" class="card">
+        <div class="kicker"><span>SUPPORTING MATERIAL</span></div>
+        <h2 class="section-title"><span class="symbol">▱</span>Verified Certificates & Credentials</h2>
+        <div class="documents">
+          <a href="https://drive.google.com/file/d/1xa6td4ZWxVLPyOuqw9dqsgKcJFWBVew2/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Fundamental Digital Marketing Course<small>View Document ↗</small></a>
+          <a href="https://drive.google.com/file/d/1vXty1_JjQ8XUb9232TGftuj6DZzexIgi/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Appreciation Letter - IFFCO<small>View Document ↗</small></a>
+          <a href="https://drive.google.com/file/d/1Jb6GK44q9q3n6BqnXzDSke499mXR1T4a/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Appreciation Letter - G4S<small>View Document ↗</small></a>
+          <a href="https://drive.google.com/file/d/1m9RnAK_5XhrX5EJKKSsRDQakHZx0ZJjv/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Basic Computer Course Certificate<small>View Document ↗</small></a>
+          <a href="https://drive.google.com/file/d/1F0U6cYYoctfsznQGTgUmhqfhwfkINiPa/view?usp=drivesdk" target="_blank" rel="noopener noreferrer">Hardware & Networking Course<small>View Document ↗</small></a>
+        </div>
+      </section>
+
+      <section id="declaration" class="card">
+        <div class="kicker"><span>DECLARATION</span></div>
+        <h2 class="section-title"><span class="symbol">✍</span>Declaration</h2>
+        <div class="declaration">
+          <p>I hereby declare that all the statements and information provided in this curriculum vitae are true, complete, and correct to the best of my knowledge and belief.</p>
+          <div class="decl-meta">
+            <span>⌖ Dubai, UAE</span>
+            <span>▦ <span id="today"></span></span>
+            <strong style="margin-left:auto;color:var(--ink);font:italic 12px Georgia,serif">Abdul Awal</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="connect" class="connect">
+        <div>
+          <span class="connect-label">OPEN TO OPPORTUNITIES</span>
+          <h2>Let's connect.</h2>
+          <p>Available for professional positions in Administrative Support, Document Control, and Operations Management.</p>
+        </div>
+        <div class="connect-links">
+          <a href="mailto:aawal86@gmail.com">✉ Email Me</a>
+          <a href="tel:+971528182654">☎ Call Phone</a>
+          <a href="https://www.linkedin.com/in/aawal86" target="_blank" rel="noopener noreferrer">in LinkedIn Profile</a>
+        </div>
+      </section>
+
+      <footer class="page-foot">
+        <b>ABDUL AWAL</b>
+        <span> DUBAI, UAE</span>
+        <span>© <span id="year"></span></span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const root = document.documentElement;
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      document.getElementById('themeToggle').textContent = isDark ? '☾ Dark Mode' : '☀ Light Mode';
+    }
+    document.getElementById('today').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
