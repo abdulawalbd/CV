@@ -17,7 +17,6 @@
       --text: #334155;
       --muted: #64748b;
       --line: #cbd5e1;
-      /* Light mode multi-color vibrant background for sidebar */
       --side: linear-gradient(145deg, #0f172a 0%, #1e3a8a 50%, #0369a1 100%);
       --side-text: #e2e8f0;
       --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
@@ -33,7 +32,6 @@
       --text: #cbd5e1;
       --muted: #94a3b8;
       --line: #1e293b;
-      /* Dark mode solid/deep background for sidebar */
       --side: #050b14;
       --side-text: #e2e8f0;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -109,7 +107,6 @@
     }
     .contact .symbol { width: 16px; color: var(--cyan); text-align: center; font-weight: bold; }
     
-    /* Perfect Aligned Navigation Section */
     .nav { display: grid; gap: 6px; }
     .nav-single { display: flex; justify-content: center; width: 100%; }
     .nav-grid-4 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; width: 100%; }
@@ -374,72 +371,209 @@
       .page-foot { font-size: 7px; gap: 7px; }
     }
 
+    /* ==========================================================
+       PROFESSIONAL EXECUTIVE PRINT & PDF STYLES (PAGE 1 INCLUDES SKILLS)
+       ========================================================== */
     @media print {
       @page { size: A4; margin: 10mm 12mm; }
-      body { background: #fff !important; color: #172033 !important; font: 8.5pt/1.35 Arial, sans-serif; }
-      .layout { display: block; max-width: none; margin: 0; padding: 0; }
-      .no-print, .sidebar, .controls { display: none !important; }
-      .main { display: block; }
+      
+      body {
+        background: #ffffff !important;
+        color: #1e293b !important;
+        font: 11pt/1.38 Arial, sans-serif !important;
+      }
+
+      .layout {
+        display: block !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .no-print, .sidebar, .controls, .connect, #connect, .documents, #documents, #cover-letter {
+        display: none !important;
+      }
+
+      .main {
+        display: block !important;
+        gap: 0 !important;
+      }
+
+      /* Corporate Executive Print Header */
       .print-header {
-        display: flex;
+        display: flex !important;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 12px;
-        padding: 10px 14px;
-        border-left: 4px solid #38bdf8;
-        background: var(--card) !important;
-        color: var(--ink) !important;
-        border: 1px solid var(--line);
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 2px solid #0284c7 !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
-      .print-header h1 { margin: 2px 0; color: var(--ink); font: 16pt Georgia, serif; }
-      .print-header p { margin: 0; color: var(--blue); font-size: 7pt; letter-spacing: 0.13em; }
-      .print-header span { color: var(--text); font-size: 8pt; }
-      .print-header img { width: 40px; height: 48px; object-fit: cover; object-position: top; border: 1px solid var(--blue); }
-      .card, .connect {
-        margin-bottom: 8px;
-        padding: 9px 11px;
-        border: 1px solid var(--line) !important;
+
+      .print-header h1 {
+        margin: 2px 0;
+        color: #0f172a !important;
+        font: 700 20pt Georgia, serif !important;
+      }
+
+      .print-header p {
+        margin: 0;
+        color: #0284c7 !important;
+        font: 700 9pt Arial, sans-serif !important;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .print-header span {
+        color: #64748b !important;
+        font-size: 9.5pt !important;
+      }
+
+      .print-header img {
+        width: 48px;
+        height: 56px;
+        object-fit: cover;
+        object-position: top;
+        border: 1px solid #cbd5e1;
         border-radius: 4px;
-        background: var(--card) !important;
-        color: var(--text) !important;
-        box-shadow: none;
+      }
+
+      .card {
+        margin-bottom: 8px !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
         break-inside: avoid;
         page-break-inside: avoid;
       }
-      .kicker { font-size: 6.5pt; }
-      .section-title { margin-bottom: 6px; padding-bottom: 4px; font-size: 11pt; color: var(--ink); }
-      .letter, .objective, .declaration, .training {
-        padding: 7px 9px;
-        background: var(--paper) !important;
+
+      .kicker { display: none !important; }
+
+      .section-title {
+        margin: 10px 0 5px !important;
+        padding-bottom: 3px !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        color: #0f172a !important;
+        font: 700 11.5pt Georgia, serif !important;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      
+      .section-title .symbol { display: none; }
+
+      .objective {
+        padding: 6px 0 !important;
+        border-left: none !important;
+        background: transparent !important;
+        font-size: 11pt !important;
+        color: #334155 !important;
+      }
+      .objective .quote { display: none !important; }
+
+      .role-head { margin: 4px 0 3px !important; }
+      .company { font-size: 11pt !important; color: #0f172a !important; }
+      .company small { color: #64748b !important; font-size: 9pt !important; }
+      .role { color: #2563eb !important; font-weight: 700; font-size: 10.5pt; }
+      .date {
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        font-size: 10pt !important;
+        color: #64748b !important;
+      }
+
+      .achievements {
+        margin: 3px 0 5px !important;
+        font-size: 10pt !important;
+        color: #059669 !important;
+      }
+
+      .subhead {
+        margin: 5px 0 3px !important;
+        font-size: 10pt !important;
+        color: #0f172a !important;
+      }
+
+      .assignments {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px;
+        margin-bottom: 5px;
+      }
+      .assignments span {
+        padding: 4px 6px !important;
+        border: 1px solid #e2e8f0 !important;
+        background: #f8fafc !important;
+        font-size: 9.5pt !important;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
-      .letter { font-size: 8.5pt; line-height: 1.35; color: var(--text); }
-      .letter p { margin-bottom: 4px; }
-      .company, .subhead, .detail-grid h3, .personal b, .education b { color: var(--ink) !important; }
-      .company { font-size: 10pt; }
-      .company small, .assignments small, .personal small, .rows span, .education span { color: var(--muted) !important; }
-      .list li, .rows div, .training p { font-size: 8pt; color: var(--text); }
-      .two-col { columns: 2; }
-      .detail-grid { gap: 18px; margin-top: 8px; }
-      .rows div { padding: 2px 0; }
-      .documents { gap: 5px; }
-      .documents a { padding: 5px 7px; color: var(--ink) !important; font-size: 8pt; background: var(--card); }
-      .connect {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: var(--card) !important;
-        color: var(--ink) !important;
+      .assignments img { width: 12px; height: 12px; }
+
+      .list { margin: 3px 0 0 !important; padding-left: 16px !important; }
+      .list li { margin-bottom: 3px !important; font-size: 10.5pt !important; color: #334155 !important; }
+
+      .training {
+        padding: 6px 8px !important;
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        font-size: 10pt !important;
         print-color-adjust: exact;
         -webkit-print-color-adjust: exact;
       }
-      .connect h2, .connect p, .connect-label { color: var(--ink) !important; }
-      .connect-links a { padding: 5px 7px; color: var(--ink) !important; border: 1px solid var(--line); font-size: 8pt; }
-      .page-foot { color: var(--muted) !important; }
-      a { text-decoration: none !important; }
+      .training p { margin: 2px 0 0 !important; }
+
+      .detail-grid { gap: 14px !important; margin-top: 5px !important; }
+      .detail-grid h3 { font-size: 10pt !important; margin-bottom: 4px !important; }
+
+      .rows div { padding: 2px 0 !important; font-size: 10pt !important; }
+      .rows span { color: #64748b !important; }
+      .rows b { color: #0f172a !important; }
+
+      .pills span, .languages span {
+        padding: 3px 6px !important;
+        font-size: 9.5pt !important;
+        border: 1px solid #cbd5e1 !important;
+        background: #f8fafc !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+
+      .education {
+        max-width: none !important;
+        padding: 3px 0 !important;
+        font-size: 10pt !important;
+      }
+
+      .personal {
+        grid-template-columns: 1fr 1fr 1fr !important;
+        gap: 5px 12px !important;
+      }
+      .personal div { padding: 4px 0 !important; border-bottom: none !important; }
+      .personal span { font-size: 8.5pt !important; }
+      .personal b { font-size: 10pt !important; }
+
+      .declaration {
+        padding: 8px 10px !important;
+        border-left: 3px solid #2563eb !important;
+        background: #f8fafc !important;
+        font-size: 10.5pt !important;
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+      .declaration p { margin-bottom: 4px !important; }
+      .decl-meta { font-size: 9.5pt !important; }
+
+      .page-foot { display: none !important; }
     }
   </style>
 </head>
@@ -463,7 +597,6 @@
         <a href="https://www.linkedin.com/in/aawal86" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile"><span class="symbol">in</span>LinkedIn Profile</a>
       </div>
       
-      <!-- Perfectly Aligned & Centered Navigation Section -->
       <nav class="nav" aria-label="CV sections">
         <div class="nav-single">
           <a href="#cover-letter">✉ Cover Letter</a>
@@ -488,7 +621,7 @@
         <div>
           <p>CURRICULUM VITAE</p>
           <h1>Abdul Awal</h1>
-          <span>Al Quoz 4, Dubai, UAE · +971 52 818 2654 · aawal86@gmail.com</span>
+          <span>Al Quoz 4, Dubai, UAE &nbsp;•&nbsp; +971 52 818 2654 &nbsp;•&nbsp; aawal86@gmail.com &nbsp;•&nbsp; linkedin.com/in/aawal86</span>
         </div>
         <img src="https://lh3.googleusercontent.com/d/113uTKvRGwZafVXQmpJnZQmYikAZ1OkQZ" alt="Abdul Awal">
       </header>
