@@ -409,7 +409,43 @@
             color: var(--text-heading);
         }
 
-        /* Ultra-Optimized Compact Print Settings (Strictly 2 Pages) */
+        /* Let's Connect Section Styles */
+        .connect-box {
+            background: var(--bg-color);
+            padding: 16px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        .connect-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .connect-btn {
+            background: #2563eb;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .connect-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Print Settings (Updated to include all sections) */
         @media print {
             @page {
                 size: A4;
@@ -421,8 +457,8 @@
             body {
                 background: #ffffff !important;
                 color: #000000 !important;
-                font-size: 9.5pt;
-                line-height: 1.25;
+                font-size: 9pt;
+                line-height: 1.2;
             }
             .portfolio-container {
                 display: block !important;
@@ -439,13 +475,13 @@
                 flex-direction: row !important;
                 flex-wrap: wrap;
                 justify-content: space-around;
-                padding: 8px 12px !important;
-                margin-bottom: 8px;
+                padding: 6px 10px !important;
+                margin-bottom: 6px;
                 border-radius: 4px;
             }
             .profile-img-container {
-                width: 55px;
-                height: 65px;
+                width: 45px;
+                height: 55px;
                 margin-bottom: 0 !important;
                 border-width: 2px !important;
             }
@@ -453,51 +489,59 @@
                 border: none !important;
                 padding: 0 !important;
                 margin: 0 !important;
-                font-size: 10px;
+                font-size: 9.5px;
                 color: #ffffff !important;
-                gap: 3px !important;
+                gap: 2px !important;
             }
             .sidebar-contact div, .sidebar-contact a {
                 color: #ffffff !important;
             }
-            .sidebar h1 { font-size: 15px; margin-bottom: 0; }
-            .sidebar h3 { font-size: 10.5px; margin-bottom: 0; }
+            .sidebar h1 { font-size: 13px; margin-bottom: 0; }
+            .sidebar h3 { font-size: 9.5px; margin-bottom: 0; }
             .main-content {
-                gap: 8px !important;
+                gap: 6px !important;
             }
             .card {
                 box-shadow: none !important;
                 border: 1px solid #cbd5e1 !important;
-                padding: 10px 14px !important;
-                margin-bottom: 8px;
+                padding: 8px 12px !important;
+                margin-bottom: 6px;
                 page-break-inside: avoid;
                 transform: none !important;
             }
             h2 {
-                font-size: 11pt !important;
-                margin-bottom: 6px !important;
+                font-size: 10pt !important;
+                margin-bottom: 4px !important;
                 padding-bottom: 2px !important;
             }
             p, li, td {
-                font-size: 9pt !important;
-                margin-bottom: 3px !important;
+                font-size: 8.5pt !important;
+                margin-bottom: 2px !important;
             }
-            .cover-letter-box {
-                padding: 8px 12px !important;
+            .cover-letter-box, .declaration-box, .connect-box {
+                padding: 6px 10px !important;
+                background: #f8fafc !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
-            .declaration-box {
-                padding: 8px 12px !important;
+            .connect-buttons {
+                margin-top: 8px;
+                gap: 8px;
+            }
+            .connect-btn {
+                padding: 5px 10px;
+                font-size: 8.5pt;
+                background: #2563eb !important;
+                color: #ffffff !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                box-shadow: none;
             }
             #home-card {
                 page-break-after: always;
             }
             #objective-card {
                 page-break-before: always;
-            }
-            .cover-letter-box, .declaration-box {
-                background: #f8fafc !important;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
             }
         }
 
@@ -551,6 +595,7 @@
                 <li><a href="#personal-card"><i class="fa-solid fa-user"></i> Personal Info</a></li>
                 <li><a href="#documents-card"><i class="fa-solid fa-folder-open"></i> Documents</a></li>
                 <li><a href="#declaration-card"><i class="fa-solid fa-signature"></i> Declaration</a></li>
+                <li><a href="#connect-card"><i class="fa-solid fa-paper-plane"></i> Let's Connect</a></li>
             </ul>
         </aside>
 
@@ -721,6 +766,19 @@
                     </div>
                     <div class="signature">
                         (ABDUL AWAL)
+                    </div>
+                </div>
+            </section>
+
+            <!-- Let's Connect Section -->
+            <section class="card" id="connect-card">
+                <h2><i class="fa-solid fa-paper-plane"></i> Let's Connect</h2>
+                <div class="connect-box">
+                    <p>Available for professional opportunities in security operations and loss prevention.</p>
+                    <div class="connect-buttons">
+                        <a href="mailto:aawal86@gmail.com" class="connect-btn"><i class="fa-solid fa-envelope"></i> Email Me</a>
+                        <a href="tel:+971528182654" class="connect-btn"><i class="fa-solid fa-phone"></i> Call Phone</a>
+                        <a href="https://www.linkedin.com/in/aawal86" target="_blank" class="connect-btn"><i class="fa-brands fa-linkedin"></i> LinkedIn Profile</a>
                     </div>
                 </div>
             </section>
